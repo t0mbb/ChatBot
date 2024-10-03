@@ -1,7 +1,7 @@
 require("dotenv").config();
-const {request} = require ("request") ;
-const {homepageService} = require ("./homepageService")
-const {templateMessage} = require("./templateMessage")
+var request = require ("request") ;
+var homepageService = require ("./homepageService")
+var templateMessage = require("./templateMessage")
 
 const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN;
 const SECONDARY_RECEIVER_ID = process.env.SECONDARY_RECEIVER_ID;
