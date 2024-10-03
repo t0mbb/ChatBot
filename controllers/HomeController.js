@@ -1,5 +1,9 @@
 const { response } = require("../app");
 const { request} = require('request')
+import homepageService from "../services/homepageService";
+import chatbotService from "../services/chatbotService";
+import templateMessage from "../services/templateMessage";
+
 require("dotenv").config();
 
 
