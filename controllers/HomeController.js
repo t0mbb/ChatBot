@@ -3,7 +3,7 @@ const { request} = require('request')
 var  homepageService = require ("../services/homepageService");
 var chatbotService = require("../services/chatbotService");
 var templateMessage = require ("../services/templateMessage");
-
+console.log(chatbotService);
 require("dotenv").config();
 
 
@@ -78,7 +78,10 @@ let postWebhook = (req, res) => {
                 handlePostback(sender_psid, webhook_event.postback);
             }
         });
-
+        if (typeof chatbotService.sendMessage !== 'function') {
+            console.error('sendMessage is not a function on chatbotService');
+            return;
+        }
         // Returns a '200 OK' response to all requests
         res.status(200).send('EVENT_RECEIVED');
     } else {
