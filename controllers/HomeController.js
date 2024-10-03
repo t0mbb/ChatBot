@@ -5,7 +5,12 @@ require("dotenv").config();
 
 const MY_VERIFY_TOKEN = process.env.MY_VERIFY_TOKEN;
 
-
+let getHomePage = (req, res) => {
+    let facebookAppId = process.env.FACEBOOK_APP_ID;
+    return res.render("homepage.ejs", {
+        facebookAppId: facebookAppId
+    })
+};
 let getWebhook = (req, res) => {
     // Your verify token. Should be a random string.
     let VERIFY_TOKEN = MY_VERIFY_TOKEN;
@@ -60,7 +65,6 @@ let postWebhook = (req, res) => {
 
             // Get the sender PSID
             let sender_psid = webhook_event.sender.id;
-            console.log("sender : " +sender_psid)
 
             // Check if the event is a message or postback and
             // pass the event to the appropriate handler function
@@ -141,27 +145,37 @@ let handleMessage = async (sender_psid, received_message) => {
 
 // Handles messaging_postbacks events
 let handlePostback = async (sender_psid, received_postback) => {
-  let request_body = {
-    "recipient" : {
-        "id" : sender_psid
-    },
-    "message" : response
-  }
+    // Get the payload for the postback
+    let payload = received_postback.payload;
 
+    // Set the response based on the postback payload
+    switch (payload) {
+        case "GET_STARTED":
+        case "RESTART_CONVERSATION":
+            await chatbotService.sendMessageWelcomeNewUser(sender_psid);
+            break;
+        case "TALK_AGENT":
+            await chatbotService.requestTalkToAgent(sender_psid);
+            break;
+        case "SHOW_HEADPHONES":
+            await chatbotService.showHeadphones(sender_psid);
+            break;
+        case "SHOW_TV":
+            await chatbotService.showTVs(sender_psid);
+            break;
+        case "SHOW_PLAYSTATION":
+            await chatbotService.showPlaystation(sender_psid);
+            break;
+        case "BACK_TO_CATEGORIES":
+            await chatbotService.backToCategories(sender_psid);
+            break;
+        case "BACK_TO_MAIN_MENU":
+            await chatbotService.backToMainMenu(sender_psid);
+            break;
+        default:
+            console.log("run default switch case")
 
-  request({
-    "uri " : "https://graph.facebook.com/v2.6/me/messages",
-    "qs" : {"access_token" : process.env.PAGE_ACCESS_TOKEN},
-    "method" : "POST",
-    "json": request_body
-
-  }, ( err , res ,body) => {
-    if(!err){
-      console.log("message sent!");
-    } else {
-        console.error("unable to send message : " + err)
     }
-  })
 };
 
 let handleSetupProfile = async (req, res) => {
@@ -216,12 +230,13 @@ let setInfoOrder = async (req, res) => {
 };
 
 module.exports = {
-    // getHomePage: getHomePage,
+    getHomePage: getHomePage,
     getWebhook: getWebhook,
     postWebhook: postWebhook,
-    // handleSetupProfile: handleSetupProfile,
-    // getSetupProfilePage: getSetupProfilePage,
-    // getInfoOrderPage: getInfoOrderPage,
-    // setInfoOrder: setInfoOrder
+    handleSetupProfile: handleSetupProfile,
+    getSetupProfilePage: getSetupProfilePage,
+    getInfoOrderPage: getInfoOrderPage,
+    setInfoOrder: setInfoOrder
 };
+
 
