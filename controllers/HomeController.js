@@ -1,3 +1,5 @@
+const { response } = require("../app");
+const { request} = require('request')
 require("dotenv").config();
 
 
@@ -58,6 +60,7 @@ let postWebhook = (req, res) => {
 
             // Get the sender PSID
             let sender_psid = webhook_event.sender.id;
+            console.log("sender : " +sender_psid)
 
             // Check if the event is a message or postback and
             // pass the event to the appropriate handler function
@@ -76,152 +79,141 @@ let postWebhook = (req, res) => {
     }
 };
 
-// Handles messages events
-// let handleMessage = async (sender_psid, received_message) => {
-//     //check the incoming message is a quick reply?
-//     if (received_message && received_message.quick_reply && received_message.quick_reply.payload) {
-//         let payload = received_message.quick_reply.payload;
-//         if (payload === "CATEGORIES") {
-//             await chatbotService.sendCategories(sender_psid);
+let handleMessage = async (sender_psid, received_message) => {
+    //check the incoming message is a quick reply?
+    if (received_message && received_message.quick_reply && received_message.quick_reply.payload) {
+        let payload = received_message.quick_reply.payload;
+        if (payload === "CATEGORIES") {
+            await chatbotService.sendCategories(sender_psid);
 
-//         } else if (payload === "LOOKUP_ORDER") {
-//             await chatbotService.sendLookupOrder(sender_psid);
+        } else if (payload === "LOOKUP_ORDER") {
+            await chatbotService.sendLookupOrder(sender_psid);
 
-//         } else if (payload === "TALK_AGENT") {
-//             await chatbotService.requestTalkToAgent(sender_psid);
-//         }
+        } else if (payload === "TALK_AGENT") {
+            await chatbotService.requestTalkToAgent(sender_psid);
+        }
 
-//         return;
-//     }
+        return;
+    }
 
 
-//     let response;
+    let response;
 
-//     // Check if the message contains text
-//     if (received_message.text) {
-//         // Create the payload for a basic text message
-//         response = {
-//             "text": `You sent the message: "${received_message.text}". Now send me an image!`
-//         }
-//     } else if (received_message.attachments) {
-//         // Get the URL of the message attachment
-//         let attachment_url = received_message.attachments[0].payload.url;
-//         response = {
-//             "attachment": {
-//                 "type": "template",
-//                 "payload": {
-//                     "template_type": "generic",
-//                     "elements": [{
-//                         "title": "Is this the right picture?",
-//                         "subtitle": "Tap a button to answer.",
-//                         "image_url": attachment_url,
-//                         "buttons": [
-//                             {
-//                                 "type": "postback",
-//                                 "title": "Yes!",
-//                                 "payload": "yes",
-//                             },
-//                             {
-//                                 "type": "postback",
-//                                 "title": "No!",
-//                                 "payload": "no",
-//                             }
-//                         ],
-//                     }]
-//                 }
-//             }
-//         }
-//     }
+    // Check if the message contains text
+    if (received_message.text) {
+        // Create the payload for a basic text message
+        response = {
+            "text": `You sent the message: "${received_message.text}". Now send me an image!`
+        }
+    } else if (received_message.attachments) {
+        // Get the URL of the message attachment
+        let attachment_url = received_message.attachments[0].payload.url;
+        response = {
+            "attachment": {
+                "type": "template",
+                "payload": {
+                    "template_type": "generic",
+                    "elements": [{
+                        "title": "Is this the right picture?",
+                        "subtitle": "Tap a button to answer.",
+                        "image_url": attachment_url,
+                        "buttons": [
+                            {
+                                "type": "postback",
+                                "title": "Yes!",
+                                "payload": "yes",
+                            },
+                            {
+                                "type": "postback",
+                                "title": "No!",
+                                "payload": "no",
+                            }
+                        ],
+                    }]
+                }
+            }
+        }
+    }
 
-//     // Sends the response message
-//     await chatbotService.sendMessage(sender_psid, response);
-// };
+    // Sends the response message
+    await chatbotService.sendMessage(sender_psid, response);
+};
 
-// // Handles messaging_postbacks events
-// let handlePostback = async (sender_psid, received_postback) => {
-//     // Get the payload for the postback
-//     let payload = received_postback.payload;
+// Handles messaging_postbacks events
+let handlePostback = async (sender_psid, received_postback) => {
+  let request_body = {
+    "recipient" : {
+        "id" : sender_psid
+    },
+    "message" : response
+  }
 
-//     // Set the response based on the postback payload
-//     switch (payload) {
-//         case "GET_STARTED":
-//         case "RESTART_CONVERSATION":
-//             await chatbotService.sendMessageWelcomeNewUser(sender_psid);
-//             break;
-//         case "TALK_AGENT":
-//             await chatbotService.requestTalkToAgent(sender_psid);
-//             break;
-//         case "SHOW_HEADPHONES":
-//             await chatbotService.showHeadphones(sender_psid);
-//             break;
-//         case "SHOW_TV":
-//             await chatbotService.showTVs(sender_psid);
-//             break;
-//         case "SHOW_PLAYSTATION":
-//             await chatbotService.showPlaystation(sender_psid);
-//             break;
-//         case "BACK_TO_CATEGORIES":
-//             await chatbotService.backToCategories(sender_psid);
-//             break;
-//         case "BACK_TO_MAIN_MENU":
-//             await chatbotService.backToMainMenu(sender_psid);
-//             break;
-//         default:
-//             console.log("run default switch case")
 
-//     }
-// };
+  request({
+    "uri " : "https://graph.facebook.com/v2.6/me/messages",
+    "qs" : {"access_token" : process.env.PAGE_ACCESS_TOKEN},
+    "method" : "POST",
+    "json": request_body
 
-// let handleSetupProfile = async (req, res) => {
-//     try {
-//         await homepageService.handleSetupProfileAPI();
-//         return res.redirect("/");
-//     } catch (e) {
-//         console.log(e);
-//     }
-// };
+  }, ( err , res ,body) => {
+    if(!err){
+      console.log("message sent!");
+    } else {
+        console.error("unable to send message : " + err)
+    }
+  })
+};
 
-// let getSetupProfilePage = (req, res) => {
-//     return res.render("profile.ejs");
-// };
+let handleSetupProfile = async (req, res) => {
+    try {
+        await homepageService.handleSetupProfileAPI();
+        return res.redirect("/");
+    } catch (e) {
+        console.log(e);
+    }
+};
 
-// let getInfoOrderPage = (req, res) => {
-//     let facebookAppId = process.env.FACEBOOK_APP_ID;
-//     return res.render("infoOrder.ejs", {
-//         facebookAppId: facebookAppId
-//     });
-// };
+let getSetupProfilePage = (req, res) => {
+    return res.render("profile.ejs");
+};
 
-// let setInfoOrder = async (req, res) => {
-//     try {
-//         let customerName = "";
-//         if (req.body.customerName === "") {
-//             customerName = "Empty";
-//         } else customerName = req.body.customerName;
+let getInfoOrderPage = (req, res) => {
+    let facebookAppId = process.env.FACEBOOK_APP_ID;
+    return res.render("infoOrder.ejs", {
+        facebookAppId: facebookAppId
+    });
+};
 
-//         // I demo response with sample text
-//         // you can check database for customer order's status
+let setInfoOrder = async (req, res) => {
+    try {
+        let customerName = "";
+        if (req.body.customerName === "") {
+            customerName = "Empty";
+        } else customerName = req.body.customerName;
 
-//         let response1 = {
-//             "text": `---Info about your lookup order---
-//             \nCustomer name: ${customerName}
-//             \nEmail address: ${req.body.email}
-//             \nOrder number: ${req.body.orderNumber}
-//             `
-//         };
+        // I demo response with sample text
+        // you can check database for customer order's status
 
-//         let response2 = templateMessage.setInfoOrderTemplate();
+        let response1 = {
+            "text": `---Info about your lookup order---
+            \nCustomer name: ${customerName}
+            \nEmail address: ${req.body.email}
+            \nOrder number: ${req.body.orderNumber}
+            `
+        };
 
-//         await chatbotService.sendMessage(req.body.psid, response1);
-//         await chatbotService.sendMessage(req.body.psid, response2);
+        let response2 = templateMessage.setInfoOrderTemplate();
 
-//         return res.status(200).json({
-//             message: "ok"
-//         });
-//     } catch (e) {
-//         console.log(e);
-//     }
-// };
+        await chatbotService.sendMessage(req.body.psid, response1);
+        await chatbotService.sendMessage(req.body.psid, response2);
+
+        return res.status(200).json({
+            message: "ok"
+        });
+    } catch (e) {
+        console.log(e);
+    }
+};
 
 module.exports = {
     // getHomePage: getHomePage,
