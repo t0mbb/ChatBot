@@ -1,5 +1,5 @@
 const { response } = require("../app");
-const { request} = require('request')
+const request = require('request');
 var  homepageService = require ("../services/homepageService");
 var chatbotService = require("../services/chatbotService");
 var templateMessage = require ("../services/templateMessage");
