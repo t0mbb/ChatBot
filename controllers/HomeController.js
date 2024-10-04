@@ -80,7 +80,8 @@ let postWebhook = (req, res) => {
 
 let handleMessage = async (sender_psid, received_message) => {
     let response;
-
+    console.log("received Message"+received_message);
+    console.log("response : " + response)
     // Check if the message contains text
     if (received_message.text) {    
   
