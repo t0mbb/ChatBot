@@ -44,7 +44,7 @@ let getWebhook = (req, res) => {
 let postWebhook = (req, res) => {
    // Parse the request body from the POST
   let body = req.body;
- console.log("body :" +req.body);
+ console.log("body :" , body);
   // Check the webhook event is from a Page subscription
   if (body.object === 'page') {
 
@@ -59,7 +59,7 @@ let postWebhook = (req, res) => {
   // Get the sender PSID
   let sender_psid = webhook_event.sender.id;
   console.log('Sender PSID: ' + sender_psid);
-  console.log('webhook messagee' + webhook_event.message)
+  console.log('webhook messagee' , webhook_event.message)
   // Check if the event is a message or postback and
   // pass the event to the appropriate handler function
   if (webhook_event.message) {
@@ -82,7 +82,7 @@ let postWebhook = (req, res) => {
 let handleMessage = async (sender_psid, received_message) => {
     let response;
     console.log("received Message"+received_message);
-    console.log("response : " + response)
+
     // Check if the message contains text
     if (received_message.text) {    
   
@@ -91,13 +91,13 @@ let handleMessage = async (sender_psid, received_message) => {
         "text": `You sent the message: "${received_message.text}". Now send me an image!`
       }
     }  
-    
+ 
     // Sends the response message
     callSendAPI(sender_psid, response);  
 };
 function callSendAPI(sender_psid, response) {
     // Construct the message body
-    console.log("sender : "+sender_psid , "response : " + response)
+    console.log("response : " , response)
     let request_body = {
       "recipient": {
         "id": sender_psid
@@ -109,7 +109,7 @@ function callSendAPI(sender_psid, response) {
     // Send the HTTP request to the Messenger Platform
     request({
       "uri": "https://graph.facebook.com/v2.6/me/messages",
-      "qs": { "access_token": process.env.PAGE_ACCESS_TOKEN },
+      "qs": { "access_token": process.env.PAGE_ACCESS_TOKEN},
       "method": "POST",
       "json": request_body
     }, (err, res, body) => {
