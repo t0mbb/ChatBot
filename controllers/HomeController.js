@@ -97,13 +97,13 @@ let handleMessage = async (sender_psid, received_message) => {
 };
 function callSendAPI(sender_psid, response) {
     // Construct the message body
-    console.log("response : " , response)
+  
     let request_body = {
       "recipient": {
         "id": sender_psid
       },
       
-      "message": response
+      "message": {response}
     }
   
     // Send the HTTP request to the Messenger Platform
@@ -115,6 +115,8 @@ function callSendAPI(sender_psid, response) {
     }, (err, res, body) => {
       if (!err) {
         console.log('message sent!')
+        console.log(process.env.PAGE_ACCESS_TOKEN)
+        console.log("Response Body:", body);
       } else {
         console.error("Unable to send message:" + err);
       }
