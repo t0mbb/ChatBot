@@ -95,10 +95,12 @@ let handleMessage = async (sender_psid, received_message) => {
 };
 function callSendAPI(sender_psid, response) {
     // Construct the message body
+    console.log("sender : "+sender_psid , "response : " + response)
     let request_body = {
       "recipient": {
         "id": sender_psid
       },
+      
       "message": response
     }
   
