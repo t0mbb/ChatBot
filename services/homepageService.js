@@ -57,6 +57,7 @@ let handleSetupProfileAPI = () => {
                 "method": "POST",
                 "json": request_body
             }, (err, res, body) => {
+                console.log(body);
                 if (!err) {
                     resolve("Done!")
                 } else {
