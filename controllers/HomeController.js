@@ -164,6 +164,12 @@ let handleSetupProfile = async (req, res) => {
     }
 };
 
+let verify = async (req, res) => {
+  
+        return res.render("verify.ejs")
+   
+};
+
 let getSetupProfilePage = (req, res) => {
     return res.render("profile.ejs");
 };
@@ -213,7 +219,8 @@ module.exports = {
     handleSetupProfile: handleSetupProfile,
     getSetupProfilePage: getSetupProfilePage,
     getInfoOrderPage: getInfoOrderPage,
-    setInfoOrder: setInfoOrder
+    setInfoOrder: setInfoOrder,
+    verify : verify
 };
 
 

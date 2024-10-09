@@ -13,7 +13,7 @@ let sendMessageWelcomeNewUser = (sender_psid) => {
             let username = await homepageService.getFacebookUsername(sender_psid);
             //send text message
             let response1 = {
-                "text": `Hi ${username}! Welcome to Tech Shop Haryphamdev, where you will find what you need.`
+                "text": `Dạ Empty Arena Billiards Hà Nội rất hân hạnh được phục vụ quý khách ${username} !`
             };
 
             //send an image
@@ -21,33 +21,30 @@ let sendMessageWelcomeNewUser = (sender_psid) => {
                 "attachment": {
                     "type": "image",
                     "payload": {
-                        "url": "https://bit.ly/imageWelcome"
+                        "url": "https://res.cloudinary.com/ddx8hv83x/image/upload/v1728461643/338859574_3427471284142607_6439415094304391260_n_1_gl2cu1.png"
                     }
                 }
             };
 
-            let response3 = {
-                "text": "At any time, use the menu below to navigate through the features."
-            };
 
             //send a quick reply
             let response4 = {
-                "text": "What can I do to help you today?",
+                "text": "Vui lòng chọn theo MENU để Empty phục vụ khách iu ạ",
                 "quick_replies": [
                     {
                         "content_type": "text",
-                        "title": "Categories",
-                        "payload": "CATEGORIES",
+                        "title": "Đặt Bàn",
+                        "payload": "DATBAN",
                     },
                     {
                         "content_type": "text",
-                        "title": "Lookup Order",
-                        "payload": "LOOKUP_ORDER",
+                        "title": "Thông Tin Giải",
+                        "payload": "TOURNAMENTS",
                     },
                     {
                         "content_type": "text",
-                        "title": "Talk to an agent",
-                        "payload": "TALK_AGENT",
+                        "title": "CẮT CAM | ZALO OA ",
+                        "payload": "ZALOOA",
                     },
                 ]
             };

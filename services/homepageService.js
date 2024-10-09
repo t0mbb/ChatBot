@@ -26,24 +26,6 @@ let handleSetupProfileAPI = () => {
                                 "title": "Restart this conversation",
                                 "payload": "RESTART_CONVERSATION"
                             },
-                            {
-                                "type": "nested",
-                                "title": "More info",
-                                "call_to_actions": [
-                                    {
-                                        "type": "web_url",
-                                        "title": "View Facebook Fan Page",
-                                        "url": "https://www.facebook.com/haryphamdev",
-                                        "webview_height_ratio": "full"
-                                    },
-                                    {
-                                        "type": "web_url",
-                                        "title": "View Youtube channel",
-                                        "url": "https://bit.ly/subscribe-haryphamdev",
-                                        "webview_height_ratio": "full"
-                                    },
-                                ]
-                            }
                         ]
                     }
                 ],
