@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var homepageController = require ('../controllers/HomeController')
+var zaloController = require('../controllers/ZaloController')
 
 require('dotenv').config();
 router.get("/", homepageController.getHomePage);
@@ -13,4 +14,5 @@ router.get("/info-order", homepageController.getInfoOrderPage);
 router.post("/set-info-order", homepageController.setInfoOrder);
 
 router.post('/webhookZalo',homepageController.postwebhookZalo)
+router.post('/zalo/sendMessage',zaloController.handleMessage)
 module.exports = router;
