@@ -6,7 +6,7 @@ const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN;
 let handleSetupProfileAPI = () => {
     return new Promise((resolve, reject) => {
         try {
-            let url = `https://graph.facebook.com/v7.0/me/messenger_profile?access_token=${PAGE_ACCESS_TOKEN}`;
+            let url = `https://graph.facebook.com/v21.0/me/messenger_profile?access_token=${PAGE_ACCESS_TOKEN}`;
             let request_body = {
                 "get_started": {
                     "payload": "GET_STARTED"
