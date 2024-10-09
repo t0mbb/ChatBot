@@ -28,7 +28,7 @@ let sendMessageWelcomeNewUser = (sender_psid) => {
 
 
             //send a quick reply
-            let response4 = {
+            let response3 = {
                 "text": "Vui lòng chọn theo MENU để Empty phục vụ khách iu ạ",
                 "quick_replies": [
                     {
@@ -51,8 +51,8 @@ let sendMessageWelcomeNewUser = (sender_psid) => {
 
             await sendMessage(sender_psid, response1);
             await sendMessage(sender_psid, response2);
+    
             await sendMessage(sender_psid, response3);
-            await sendMessage(sender_psid, response4);
             resolve("done");
         } catch (e) {
             reject(e);
