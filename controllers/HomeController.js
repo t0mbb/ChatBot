@@ -78,6 +78,20 @@ let postWebhook = (req, res) => {
   }
 };
 
+let postwebhookZalo = (req, res) => {
+    // Parse the request body from the POST
+    try {
+ let body = req.body;
+  console.log("body :" , body);// Return a '200 OK' response to all events
+    return res.status(200).send('EVENT_RECEIVED');
+    }
+  
+catch(error)
+{
+    console.log("error" , error)
+    return res.status(404).send(error);
+}
+   } 
 let handleMessage = async (sender_psid, received_message) => {
     let response;
     console.log("received Message"+received_message);
@@ -220,7 +234,8 @@ module.exports = {
     getSetupProfilePage: getSetupProfilePage,
     getInfoOrderPage: getInfoOrderPage,
     setInfoOrder: setInfoOrder,
-    verify : verify
+    verify : verify,
+    postwebhookZalo : postwebhookZalo,
 };
 
 

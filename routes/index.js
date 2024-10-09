@@ -12,5 +12,5 @@ router.get("/zalo_verifierVOIK98U59YDtihmNd88L05kDhJQt-trjCZam.html" , homepageC
 router.get("/info-order", homepageController.getInfoOrderPage);
 router.post("/set-info-order", homepageController.setInfoOrder);
 
-
+router.post('webhookZalo',homepageController.postwebhookZalo)
 module.exports = router;
