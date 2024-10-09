@@ -48,7 +48,7 @@ let handleSetupProfileAPI = () => {
                     }
                 ],
                 "whitelisted_domains": [
-                    "https://tech-shop-haryphamdev.herokuapp.com/"
+                    "https://chatbot-seii.onrender.com/"
                 ]
             };
             // Send the HTTP request to the Messenger Platform
