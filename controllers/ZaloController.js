@@ -14,7 +14,7 @@ let handleMessage = async () => {
     callSendAPI( response);  
 };
 
-function callSendAPI(response) {
+function callSendAPI(response , req,res) {
     // Construct the message body
   
     let request_body = {
@@ -24,7 +24,7 @@ function callSendAPI(response) {
     // Send the HTTP request to the Messenger Platform
     request({
       "uri": "https://openapi.zalo.me/v2.0/oa/message",
-      "qs": { "access_token": process.env.ZALO_TOKEN},
+      "qs": { "access_token": req.session.access_token},
       "method": "POST",
       "json": request_body
     }, (err, res, body) => {
@@ -100,12 +100,12 @@ function callSendAPI(response) {
             "body": formBody
           }, (err, req, res, body) => {
               const access_token = req.body.access_token;
-              req.session.access_token = access_token;
-              console.log("Success!" + access_token)
+              
+              console.log("Success!" + access_token);
+              console.log("body : " ,body)
              
             if (!err) {
                 
-               return res.status(404).json("Succeed generate accessToken")
          
             } else {
               console.error("ERROR | " + err);
