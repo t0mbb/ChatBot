@@ -1,6 +1,7 @@
 const request = require('request');
 require("dotenv").config();
 var zaloServices = require ("../services/zaloverify");
+const querystring = require('querystring');
 const MY_VERIFY_TOKEN = process.env.ZALO_TOKEN;
 
 
@@ -64,7 +65,8 @@ function callSendAPI(response) {
         "qs": { "secret_key": process.env.SECRETKEY},
         "method": "POST",
         "headers": {
-            "Content-Type": "application/x-www-form-urlencoded" 
+            "Content-Type": "application/x-www-form-urlencoded" ,
+            "secret_key": process.env.SECRETKEY
           },
         "body": formBody
       }, (err, res, body) => {
