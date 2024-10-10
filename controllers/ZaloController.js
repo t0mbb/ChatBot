@@ -42,8 +42,8 @@ function callSendAPI(response) {
     await zaloServices.Zaloverify()
     let authtoken = req.query['code'];
     let queryOAID = req.query['oa_id'];
-    await postAccessToken(authtoken);
-    return res.status(200).json({ authtoken,queryOAID}) 
+    let result = await postAccessToken(authtoken);
+    return res.status(200).json({ authtoken,queryOAID , result}) 
     }
    catch(error)
    {
@@ -54,8 +54,8 @@ function callSendAPI(response) {
   let postAccessToken = ( authCode ) => {
     let request_body = {
         "code" : authCode, 
-        "app_id" : process.env.IDAPP,
-        "grant_type" : "authorization_code",
+        "app_id" : process.env.APPID,
+        "grant_type" : authorization_code,
         "code_verifier": process.env.CODE_VERIFIER
       }
     
