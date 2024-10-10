@@ -55,7 +55,7 @@ function callSendAPI(response) {
     let request_body = {
         "code" : authCode, 
         "app_id" : process.env.APPID,
-        "grant_type" : authorization_code,
+        "grant_type" : "authorization_code",
         "code_verifier": process.env.CODE_VERIFIER
       }
     
