@@ -62,7 +62,6 @@ function callSendAPI(response) {
       let formBody = querystring.stringify(request_body);
       request({
         "uri": "https://oauth.zaloapp.com/v4/oa/access_token",
-        "qs": { "secret_key": process.env.SECRETKEY},
         "method": "POST",
         "headers": {
             "Content-Type": "application/x-www-form-urlencoded" ,
@@ -70,7 +69,10 @@ function callSendAPI(response) {
           },
         "body": formBody
       }, (err, res, body) => {
-          console.log(body);
+          const access_token = req.body.access_token;
+          const refresh_token = req.body.refresh_token;
+          accessTokenByRef(refresh_token);
+
         if (!err) {
            return console.log('TOKEN SUCCESS')
      
@@ -80,7 +82,37 @@ function callSendAPI(response) {
       }); 
   }
 
+  let accessTokenByRef = () => {
+        let request_body = {
+            "refresh_token" : process.env.refresh_token, 
+            "app_id" : process.env.APPID,
+            "grant_type" : "refresh_token",
+          }
+          let formBody = querystring.stringify(request_body);
+          request({
+            "uri": "https://oauth.zaloapp.com/v4/oa/access_token",
+            "method": "POST",
+            "headers": {
+                "Content-Type": "application/x-www-form-urlencoded" ,
+                "secret_key": process.env.SECRETKEY
+              },
+            "body": formBody
+          }, (err, req, res, body) => {
+              const access_token = req.body.access_token;
+              console.log(body);
+            if (!err) {
+                
+                console.log("generated! " , access_token)
+               return access_token ; 
+         
+            } else {
+              console.error("ERROR | " + err);
+            }
+          }); 
+  }
+
 module.exports = {
  handleMessage : handleMessage,
- getCallBack : getCallBack
+ getCallBack : getCallBack,
+ accessTokenByRef : accessTokenByRef
 };
