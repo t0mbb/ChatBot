@@ -1,21 +1,21 @@
 const request = require('request');
 require("dotenv").config();
-
+var zaloServices = require ("../services/zaloverify");
 const MY_VERIFY_TOKEN = process.env.ZALO_TOKEN;
 
-let handleMessage = async (sender_psid, received_message) => {
+
+let handleMessage = async () => {
      let response = {
-        "text": `You sent the message: Now send me an image!`
+        "text": `Hello World!`
       }
     // Sends the response message
-    callSendAPI(sender_psid, response);  
+    callSendAPI( response);  
 };
 
-function callSendAPI(sender_psid, response) {
+function callSendAPI(response) {
     // Construct the message body
   
     let request_body = {
-      
       "message": response
     }
   
@@ -26,8 +26,9 @@ function callSendAPI(sender_psid, response) {
       "method": "POST",
       "json": request_body
     }, (err, res, body) => {
+        console.log(body);
       if (!err) {
-        console.log('message sent!')
+         return console.log('message sent!')
    
       } else {
         console.error("Unable to send message:" + err);
@@ -36,6 +37,24 @@ function callSendAPI(sender_psid, response) {
   }
 
 
+  let getCallBack = async (req, res) => {
+    try {
+    await zaloServices.Zaloverify()
+    const authorizationToken = req.params.AUTHORIZATION_CODE;
+    const oaid = req.params.OA_ID;
+    let authtoken2query = req.query['AUTHORIZATION_CODE'];
+    let queryOAID = req.query['OA_ID'];
+    return res.status(200).json({ authorizationToken, oaid , authtoken2query,queryOAID}) 
+    }
+   catch(error)
+   {
+    return res.status(404).json(error)
+   }
+    
+};
+
+
 module.exports = {
- handleMessage : handleMessage
+ handleMessage : handleMessage,
+ getCallBack : getCallBack
 };

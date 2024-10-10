@@ -15,4 +15,5 @@ router.post("/set-info-order", homepageController.setInfoOrder);
 
 router.post('/webhookZalo',homepageController.postwebhookZalo)
 router.post('/zalo/sendMessage',zaloController.handleMessage)
+router.get('/zalo/CallBack',zaloController.getCallBack)
 module.exports = router;
