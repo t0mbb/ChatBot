@@ -1,6 +1,7 @@
 const request = require('request');
 require("dotenv").config();
 var zaloServices = require ("../services/zaloverify");
+const session = require('express-session');
 const querystring = require('querystring');
 const MY_VERIFY_TOKEN = process.env.ZALO_TOKEN;
 
@@ -99,11 +100,12 @@ function callSendAPI(response) {
             "body": formBody
           }, (err, req, res, body) => {
               const access_token = req.body.access_token;
-              console.log(body);
+              req.session.access_token = access_token;
+              console.log("Success!" + access_token)
+             
             if (!err) {
                 
-                console.log("generated! " , access_token)
-               return access_token ; 
+               return res.status(404).json("Succeed generate accessToken")
          
             } else {
               console.error("ERROR | " + err);

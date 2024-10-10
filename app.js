@@ -1,6 +1,6 @@
 var createError = require('http-errors');
 var express = require('express');
-
+const session = require('express-session');
 var path = require('path');
 var logger = require('morgan');
 
@@ -20,7 +20,12 @@ mongoose.connect(database)
 //2. config body-parser library (get data from client-side)
 var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }));
-
+app.use(session({
+  secret: 'yourSecretKey',  
+  resave: false,  
+  saveUninitialized: true,  
+  cookie: { secure: false } 
+}));
 // view engine setup
 
 app.set('views', path.join(__dirname, 'views'));
