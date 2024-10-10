@@ -40,9 +40,10 @@ function callSendAPI(response) {
   let getCallBack = async (req, res) => {
     try {
     await zaloServices.Zaloverify()
-    let authtoken2query = req.query['code'];
+    let authtoken = req.query['code'];
     let queryOAID = req.query['oa_id'];
-    return res.status(200).json({ authtoken2query,queryOAID}) 
+    await postAccessToken(authtoken);
+    return res.status(200).json({ authtoken,queryOAID}) 
     }
    catch(error)
    {
@@ -50,7 +51,30 @@ function callSendAPI(response) {
    }
     
 };
-
+  let postAccessToken = ( authCode ) => {
+    let request_body = {
+        "code" : authCode, 
+        "app_id" : process.env.IDAPP,
+        "grant_type" : "authorization_code",
+        "code_verifier": process.env.CODE_VERIFIER
+      }
+    
+      // Send the HTTP request to the Messenger Platform
+      request({
+        "uri": "https://oauth.zaloapp.com/v4/oa/access_token",
+        "qs": { "secret_key": process.env.SECRETKEY},
+        "method": "POST",
+        "json": request_body
+      }, (err, res, body) => {
+          console.log(body);
+        if (!err) {
+           return console.log('TOKEN SUCCESS')
+     
+        } else {
+          console.error("ERROR | " + err);
+        }
+      }); 
+  }
 
 module.exports = {
  handleMessage : handleMessage,
