@@ -54,17 +54,19 @@ function callSendAPI(response) {
   let postAccessToken = ( authCode ) => {
     let request_body = {
         "code" : authCode, 
-        "app_id" : `${process.env.APPID}`,
+        "app_id" : process.env.APPID,
         "grant_type" : "authorization_code",
         "code_verifier": process.env.CODE_VERIFIER
       }
-    
-      // Send the HTTP request to the Messenger Platform
+      let formBody = querystring.stringify(request_body);
       request({
         "uri": "https://oauth.zaloapp.com/v4/oa/access_token",
         "qs": { "secret_key": process.env.SECRETKEY},
         "method": "POST",
-        "json": request_body
+        "headers": {
+            "Content-Type": "application/x-www-form-urlencoded" 
+          },
+        "body": formBody
       }, (err, res, body) => {
           console.log(body);
         if (!err) {
