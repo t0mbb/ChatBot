@@ -40,11 +40,9 @@ function callSendAPI(response) {
   let getCallBack = async (req, res) => {
     try {
     await zaloServices.Zaloverify()
-    const authorizationToken = req.params.AUTHORIZATION_CODE;
-    const oaid = req.params.OA_ID;
-    let authtoken2query = req.query['AUTHORIZATION_CODE'];
-    let queryOAID = req.query['OA_ID'];
-    return res.status(200).json({ authorizationToken, oaid , authtoken2query,queryOAID}) 
+    let authtoken2query = req.query['code'];
+    let queryOAID = req.query['oa_id'];
+    return res.status(200).json({ authtoken2query,queryOAID}) 
     }
    catch(error)
    {
