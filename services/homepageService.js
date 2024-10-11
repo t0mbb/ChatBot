@@ -18,6 +18,11 @@ let handleSetupProfileAPI = () => {
                         "call_to_actions": [
                             {
                                 "type": "postback",
+                                "title": "Đặt Bàn",
+                                "payload": "DATBAN"
+                            },
+                            {
+                                "type": "postback",
                                 "title": "Talk to an agent",
                                 "payload": "TALK_AGENT"
                             },

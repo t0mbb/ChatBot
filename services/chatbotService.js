@@ -51,7 +51,6 @@ let sendMessageWelcomeNewUser = (sender_psid) => {
 
             await sendMessage(sender_psid, response1);
             await sendMessage(sender_psid, response2);
-    
             await sendMessage(sender_psid, response3);
             resolve("done");
         } catch (e) {
