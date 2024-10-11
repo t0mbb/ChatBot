@@ -69,7 +69,7 @@ function callSendAPI(response , req,res) {
             "secret_key": process.env.SECRETKEY
           },
         "body": formBody
-      }, (err, res, body) => {
+      }, (err, req,res, body) => {
           const access_token = req.body.access_token;
           const refresh_token = req.body.refresh_token;
           accessTokenByRef(refresh_token);
@@ -99,9 +99,7 @@ function callSendAPI(response , req,res) {
               },
             "body": formBody
           }, (err, req, res, body) => {
-              const access_token = req.body.access_token;
-              
-              console.log("Success!" + access_token);
+       
               console.log("body : " ,body)
              
             if (!err) {
