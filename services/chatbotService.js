@@ -13,7 +13,7 @@ let sendMessageWelcomeNewUser = (sender_psid) => {
             let username = await homepageService.getFacebookUsername(sender_psid);
             //send text message
             let response1 = {
-                "text": `Dạ Empty Arena Billiards Hà Nội rất hân hạnh được phục vụ quý khách ${username} !`
+                "text": `Empty Arena Billiards Hà Nội rất hân hạnh được phục vụ quý khách ${username} !`
             };
 
             //send an image
@@ -31,6 +31,24 @@ let sendMessageWelcomeNewUser = (sender_psid) => {
             let response3 = {
                 "text": "Vui lòng chọn theo MENU để Empty phục vụ khách iu ạ",
                 "quick_replies": [
+                    {"content_type": "text",
+                        "title": "CATEGORIES",
+                        "payload": "CATEGORIES",},
+                    ,         {
+                        "content_type": "text",
+                        "title": "Categories",
+                        "payload": "CATEGORIES",
+                    },
+                    {
+                        "content_type": "text",
+                        "title": "Lookup Order",
+                        "payload": "LOOKUP_ORDER",
+                    },
+                    {
+                        "content_type": "text",
+                        "title": "Talk to an agent",
+                        "payload": "TALK_AGENT",
+                    },
                     {
                         "content_type": "text",
                         "title": "Đặt Bàn",
