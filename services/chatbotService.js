@@ -31,24 +31,6 @@ let sendMessageWelcomeNewUser = (sender_psid) => {
             let response3 = {
                 "text": "Vui lòng chọn theo MENU để Empty phục vụ khách iu ạ",
                 "quick_replies": [
-                    {"content_type": "text",
-                        "title": "CATEGORIES",
-                        "payload": "CATEGORIES",},
-                    ,         {
-                        "content_type": "text",
-                        "title": "Categories",
-                        "payload": "CATEGORIES",
-                    },
-                    {
-                        "content_type": "text",
-                        "title": "Lookup Order",
-                        "payload": "LOOKUP_ORDER",
-                    },
-                    {
-                        "content_type": "text",
-                        "title": "Talk to an agent",
-                        "payload": "TALK_AGENT",
-                    },
                     {
                         "content_type": "text",
                         "title": "Đặt Bàn",
@@ -57,12 +39,17 @@ let sendMessageWelcomeNewUser = (sender_psid) => {
                     {
                         "content_type": "text",
                         "title": "Thông Tin Giải",
-                        "payload": "TOURNAMENTS",
+                        "payload": "TALK_AGENT",
                     },
                     {
                         "content_type": "text",
                         "title": "CẮT CAM | ZALO OA ",
-                        "payload": "ZALOOA",
+                        "payload": "LOOKUP_ORDER",
+                    },
+                    {
+                        "content_type": "text",
+                        "title": "CATEGORIES",
+                        "payload": "CATEGORIES",
                     },
                 ]
             };

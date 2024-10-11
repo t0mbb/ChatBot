@@ -23,18 +23,13 @@ let handleSetupProfileAPI = () => {
                             },
                             {
                                 "type": "postback",
-                                "title": "Đặt Bàn",
-                                "payload": "DATBAN"
+                                "title": "LOOKING ORDER",
+                                "payload": "LOOKUP_ORDER"
                             },
                             {
                                 "type": "postback",
                                 "title": "Talk to an agent",
                                 "payload": "TALK_AGENT"
-                            },
-                            {
-                                "type": "postback",
-                                "title": "Restart this conversation",
-                                "payload": "RESTART_CONVERSATION"
                             },
                         ]
                     }
