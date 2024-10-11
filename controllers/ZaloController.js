@@ -70,6 +70,7 @@ function callSendAPI(response , req,res) {
           },
         "body": formBody
       }, (err, req,res, body) => {
+          console.log(body);
           const access_token = req.body.access_token;
           const refresh_token = req.body.refresh_token;
           accessTokenByRef(refresh_token);
