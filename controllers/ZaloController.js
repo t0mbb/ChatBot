@@ -73,6 +73,8 @@ function callSendAPI(response , req,res) {
           const access_token = req.body.access_token;
           const refresh_token = req.body.refresh_token;
           accessTokenByRef(refresh_token);
+          console.log(refresh_token);
+          console.log(access_token);
 
         if (!err) {
            return console.log('TOKEN SUCCESS')
@@ -83,9 +85,9 @@ function callSendAPI(response , req,res) {
       }); 
   }
 
-  let accessTokenByRef = () => {
+  let accessTokenByRef = (refresh_token) => {
         let request_body = {
-            "refresh_token" : process.env.refresh_token, 
+            "refresh_token" : refresh_token, 
             "app_id" : process.env.APPID,
             "grant_type" : "refresh_token",
           }
