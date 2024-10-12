@@ -18,19 +18,24 @@ let handleSetupProfileAPI = () => {
                         "call_to_actions": [
                             {
                                 "type": "postback",
-                                "title": "CATEGORIES",
-                                "payload": "CATEGORIES"
+                                "title": "ĐẶT BÀN",
+                                "payload": "DATBAN"
                             },
                             {
                                 "type": "postback",
-                                "title": "LOOKING ORDER",
-                                "payload": "LOOKUP_ORDER"
+                                "title": "Cắt Cam | ZALO OA",
+                                "payload": "ZALO_REF"
                             },
                             {
                                 "type": "postback",
-                                "title": "Talk to an agent",
+                                "title": "Hỏi Đáp",
                                 "payload": "TALK_AGENT"
                             },
+                            {
+                                "type": "postback",
+                                "title": "Bắt Đầu",
+                                "payload": "RESTART_CONVERSATION"
+                            }
                         ]
                     }
                 ],

@@ -1,4 +1,4 @@
-let sendCategoriesTemplate = () =>{
+let sendZALOOATemplate = () =>{
     return {
         "attachment": {
             "type": "template",
@@ -6,69 +6,28 @@ let sendCategoriesTemplate = () =>{
                 "template_type": "generic",
                 "elements": [
                     {
-                        "title": "Headphones",
+                        "title": "EMPTY ARENA BILLIARDS CUSTOMER SERVICES ",
                         "image_url": "https://bit.ly/imageHeadphones",
-                        "subtitle": "Bose Noise Cancelling Wireless Bluetooth Headphones",
+                        "subtitle": "| CẮT CAM |",
                         "default_action": {
                             "type": "web_url",
-                            "url": "https://bit.ly/webHeadphones",
+                            "url": "https://chatbot.zalo.me/ref/2127175614726328357?id=cat_cam",
                             "webview_height_ratio": "tall",
                         },
                         "buttons": [
                             {
                                 "type": "web_url",
-                                "url": "https://bit.ly/webHeadphones",
-                                "title": "View on Website"
+                                "url": "https://chatbot.zalo.me/ref/2127175614726328357?id=cat_cam",
+                                "title": "Kết Nối ZALO OA  "
                             },
                             {
                                 "type": "postback",
-                                "title": "Show Headphones",
-                                "payload": "SHOW_HEADPHONES"
+                                "title": "Quay Lại Menu",
+                                "payload": "RETURN_MAIN_MENU"
                             }
                         ]
                     },
-                    {
-                        "title": "TV",
-                        "image_url": "https://bit.ly/imageTV",
-                        "subtitle": "Master of quality & Incredible clarity",
-                        "default_action": {
-                            "type": "web_url",
-                            "url": "https://bit.ly/webTelevision",
-                            "webview_height_ratio": "tall",
-                        },
-                        "buttons": [
-                            {
-                                "type": "web_url",
-                                "url": "https://bit.ly/webTelevision",
-                                "title": "View on Website"
-                            }, {
-                                "type": "postback",
-                                "title": "Show TVs",
-                                "payload": "SHOW_TV"
-                            }
-                        ]
-                    },
-                    {
-                        "title": "Playstation",
-                        "image_url": "https://bit.ly/imagePlaystation",
-                        "subtitle": "Incredible games & Endless entertainment",
-                        "default_action": {
-                            "type": "web_url",
-                            "url": "https://bit.ly/webPlaystation",
-                            "webview_height_ratio": "tall",
-                        },
-                        "buttons": [
-                            {
-                                "type": "web_url",
-                                "url": "https://bit.ly/webPlaystation",
-                                "title": "View on Website"
-                            }, {
-                                "type": "postback",
-                                "title": "Show Playstation",
-                                "payload": "SHOW_PLAYSTATION"
-                            }
-                        ]
-                    },
+               
                 ]
             }
         }
@@ -239,7 +198,7 @@ let setInfoOrderTemplate = ()=>{
 };
 
 module.exports = {
-    sendCategoriesTemplate: sendCategoriesTemplate,
+    sendZALOOATemplate: sendZALOOATemplate,
     sendHeadphonesTemplate: sendHeadphonesTemplate,
     sendLookupOrderTemplate: sendLookupOrderTemplate,
     backToMainMenuTemplate: backToMainMenuTemplate,

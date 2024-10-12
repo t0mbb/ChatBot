@@ -38,18 +38,18 @@ let sendMessageWelcomeNewUser = (sender_psid) => {
                     },
                     {
                         "content_type": "text",
-                        "title": "Thông Tin Giải",
+                        "title": "Hỏi Đáp ",
                         "payload": "TALK_AGENT",
                     },
                     {
                         "content_type": "text",
                         "title": "CẮT CAM | ZALO OA ",
-                        "payload": "LOOKUP_ORDER",
+                        "payload": "ZALO_REF",
                     },
                     {
                         "content_type": "text",
-                        "title": "CATEGORIES",
-                        "payload": "CATEGORIES",
+                        "title": "TESTING",
+                        "payload": "LOOKUP_ORDER",
                     },
                 ]
             };
@@ -101,11 +101,11 @@ let requestTalkToAgent = (sender_psid) => {
         try {
             //send a text message
             let response1 = {
-                "text": "Ok. Someone real will be with you in a few minutes ^^"
+                "text": "Dạ , Empty sẽ trả lời quý khách sớm nhất có thể ạ"
             };
-
+            
             await sendMessage(sender_psid, response1);
-
+            await TaggingTalkReq(sender_psid);
             //change this conversation to page inbox
             let app = "page_inbox"
             await passThreadControl(sender_psid, app);
@@ -159,11 +159,11 @@ let passThreadControl = (sender_psid, app) => {
     });
 };
 
-let sendCategories = (sender_psid) => {
+let sendZALOOATemplate = (sender_psid) => {
     return new Promise(async (resolve, reject) => {
         try {
             //send a generic template message
-            let response = templateMessage.sendCategoriesTemplate();
+            let response = templateMessage.sendZALOOATemplate();
             await sendMessage(sender_psid, response);
             resolve("done");
         } catch (e) {
@@ -265,10 +265,36 @@ let takeControlConversation = (sender_psid) =>{
     });
 };
 
+let TaggingTalkReq = (sender_psid) => {
+    return new Promise((resolve, reject) => {
+        try {
+            // Construct the message body
+            let request_body = {
+                "user": sender_psid,
+            };
+            // Send the HTTP request to the Messenger Platform
+            request({
+                "uri": `https://graph.facebook.com/v21.0/${process.env.REQID}/label?access_token=${PAGE_ACCESS_TOKEN}`,
+                "method": "POST",
+                "json": request_body
+            }, (err, res, body) => {
+                console.log(body)
+                if (!err) {
+                    resolve('SUCCESS!')
+                } else {
+                    reject("Unable to send message:" + err);
+                }
+            });
+        } catch (e) {
+            reject(e);
+        }
+    });
+};
+
 module.exports = {
     sendMessage: sendMessage,
     sendMessageWelcomeNewUser: sendMessageWelcomeNewUser,
-    sendCategories: sendCategories,
+    sendZALOOATemplate : sendZALOOATemplate,
     sendLookupOrder: sendLookupOrder,
     requestTalkToAgent: requestTalkToAgent,
     showHeadphones: showHeadphones,

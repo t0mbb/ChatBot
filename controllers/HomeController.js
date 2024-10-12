@@ -105,8 +105,8 @@ let handleMessage = async (sender_psid, received_message) => {
       //check the incoming message is a quick reply?
     if (received_message && received_message.quick_reply && received_message.quick_reply.payload) {
         let payload = received_message.quick_reply.payload;
-        if (payload === "CATEGORIES") {
-            await chatbotService.sendCategories(sender_psid);
+        if (payload === "ZALO_REF") {
+            await chatbotService.sendZALOOATemplate(sender_psid);
 
         } else if (payload === "LOOKUP_ORDER") {
             await chatbotService.sendLookupOrder(sender_psid);
@@ -202,17 +202,8 @@ let handlePostback = async (sender_psid, received_postback) => {
         case "TALK_AGENT":
             await chatbotService.requestTalkToAgent(sender_psid);
             break;
-        case "SHOW_HEADPHONES":
-            await chatbotService.showHeadphones(sender_psid);
-            break;
-        case "SHOW_TV":
-            await chatbotService.showTVs(sender_psid);
-            break;
-        case "SHOW_PLAYSTATION":
-            await chatbotService.showPlaystation(sender_psid);
-            break;
-        case "BACK_TO_CATEGORIES":
-            await chatbotService.backToCategories(sender_psid);
+        case "ZALO_REF":
+            await chatbotService.sendZALOOATemplate(sender_psid);
             break;
         case "BACK_TO_MAIN_MENU":
             await chatbotService.backToMainMenu(sender_psid);
