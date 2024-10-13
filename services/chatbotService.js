@@ -373,7 +373,8 @@ let FEEDBACK = (sender_psid) => {
                 "method": "POST",
                 "json": request_body
             }, (err, res, body) => {
-                console.log(body)
+                console.log("feedback (BODY) | " , body);
+                console.log("feedback (BODY) | " , res);
                 if (!err) {
                     resolve('SUCCESS!')
                 } else {
