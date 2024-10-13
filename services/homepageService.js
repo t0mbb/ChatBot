@@ -39,7 +39,7 @@ let handleSetupProfileAPI = () => {
                             {
                                 "type" : "postback",
                                 "title" : "FEEDBACK",
-                                "payload" : "FEEDBACK"
+                                "payload" : "FEEDBACK" 
                             }
                         ]
                     }

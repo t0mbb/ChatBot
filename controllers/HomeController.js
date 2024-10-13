@@ -213,7 +213,8 @@ let handlePostback = async (sender_psid, received_postback) => {
             await chatbotService.sendQuickReply(sender_psid);
             break;
         case "FEEDBACK":
-            await chatbotService.FEEDBACK(sender_psid);
+             await handleFeedback(sender_psid);
+        
             break;
         default:
             console.log("run default switch case")
@@ -230,6 +231,19 @@ let handleSetupProfile = async (req, res) => {
     }
 };
 
+let handleFeedback = async (req, res , sender_psid) => {
+    try {
+        const result = await chatbotService.FEEDBACK(sender_psid);
+        console.log(result);
+        let response1 = {
+            "text": " Cảm ơn Quý Khách đã để lại góp ý! \nEmpty Arena Billiards sẽ cải thiện để mang tới cho khách hàng những trải nghiệm tốt nhất!"
+        };
+        await sendMessage(sender_psid, response1);
+    } catch (e) {
+        console.log(e);
+    }
+};
+let sendRespond 
 let verify = async (req, res) => {
   
         return res.render("verify.ejs")

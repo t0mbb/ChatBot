@@ -340,20 +340,21 @@ let FEEDBACK = (sender_psid) => {
                       "type": "template",
                       "payload": {
                         "template_type": "customer_feedback",
-                        "title": "FEEDBACK |", // Business needs to define. 
+                        //image
+                        "title": "FEEDBACK", // Business needs to define. 
                         "subtitle": "Khách iu cho chúng mình xin Feedback nhé ạ ", // Business needs to define. 
-                        "button_title": "Rate Experience", // Business needs to define. 
+                        "button_title": "FeedBack", // Business needs to define. 
                         "feedback_screens": [{
                           "questions":[{
                             "id": "fdback", // Unique id for question that business sets
                             "type": "csat",
                             "title": "Chất lượng dịch vụ của EMPTY ạ  ", // Optional. If business does not define, we show standard text. Standard text based on question type ("csat", "nps", "ces" >>> "text")
-                            "score_label": "neg_pos", // Optional
+                            "score_label": "unlike_like", // Optional
                             "score_option": "five_stars", // Optional
                             "follow_up": // Optional. Inherits the title and id from the previous question on the same page.  Only free-from input is allowed. No other title will show. 
                             {
                               "type": "free_form", 
-                              "placeholder": "Give additional feedback" // Optional
+                              "placeholder": "Cho chúng tớ xin thêm góp ý để cải thiện nhé <3" // Optional
                             }
                           }]
                         }],
