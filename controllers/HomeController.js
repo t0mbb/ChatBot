@@ -231,12 +231,12 @@ let handleSetupProfile = async (req, res) => {
     }
 };
 
-let handleFeedback = async (req, res , sender_psid) => {
+let handleFeedback = async ( sender_psid) => {
     try {
         const result = await chatbotService.FEEDBACK(sender_psid);
         console.log(result);
         let response1 = {
-            "text": " Cảm ơn Quý Khách đã để lại góp ý! \nEmpty Arena Billiards sẽ cải thiện để mang tới cho khách hàng những trải nghiệm tốt nhất!"
+            "text": " Cảm ơn Quý Khách đã để lại góp ý! \n Empty Arena Billiards sẽ cải thiện để mang tới cho khách hàng những trải nghiệm tốt nhất!"
         };
         await sendMessage(sender_psid, response1);
     } catch (e) {
