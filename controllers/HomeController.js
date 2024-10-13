@@ -234,7 +234,7 @@ let handleSetupProfile = async (req, res) => {
 let handleFeedback = async ( sender_psid) => {
     try {
         const result = await chatbotService.FEEDBACK(sender_psid);
-        console.log(result.messaging_feedback);
+        console.log("result | " , result);
         let response1 = {
             "text": " Cảm ơn Quý Khách đã để lại góp ý! \n Empty Arena Billiards sẽ cải thiện để mang tới cho khách hàng những trải nghiệm tốt nhất!"
         };
