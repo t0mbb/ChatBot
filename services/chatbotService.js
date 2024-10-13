@@ -48,8 +48,8 @@ let sendMessageWelcomeNewUser = (sender_psid) => {
                     },
                     {
                         "content_type": "text",
-                        "title": "TESTING",
-                        "payload": "LOOKUP_ORDER",
+                        "title": "FEEDBACK",
+                        "payload": "FEEDBACK",
                     },
                 ]
             };
@@ -291,6 +291,102 @@ let TaggingTalkReq = (sender_psid) => {
     });
 };
 
+let sendQuickReply = (sender_psid) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            //send a quick reply
+            let response3 = {
+                "text": "Vui lòng chọn theo MENU để Empty phục vụ khách iu ạ",
+                "quick_replies": [
+                    {
+                        "content_type": "text",
+                        "title": "Đặt Bàn",
+                        "payload": "DATBAN",
+                    },
+                    {
+                        "content_type": "text",
+                        "title": "Hỏi Đáp ",
+                        "payload": "TALK_AGENT",
+                    },
+                    {
+                        "content_type": "text",
+                        "title": "CẮT CAM | ZALO OA ",
+                        "payload": "ZALO_REF",
+                    },
+                    {
+                        "content_type": "text",
+                        "title": "TESTING",
+                        "payload": "FEEDBACK",
+                    },
+                ]
+            };
+            await sendMessage(sender_psid, response3);
+            resolve("done");
+        } catch (e) {
+            reject(e);
+        }
+    });
+};
+let FEEDBACK = (sender_psid) => {
+    return new Promise((resolve, reject) => {
+        try {
+            // Construct the message body
+            let request_body = {
+                "recipient": {
+                    "id": sender_psid
+                  },
+                  "message": {
+                    "attachment": {
+                      "type": "template",
+                      "payload": {
+                        "template_type": "customer_feedback",
+                        "title": "FEEDBACK |", // Business needs to define. 
+                        "subtitle": "Khách iu cho chúng mình xin Feedback nhé ạ ", // Business needs to define. 
+                        "button_title": "Rate Experience", // Business needs to define. 
+                        "feedback_screens": [{
+                          "questions":[{
+                            "id": "fdback", // Unique id for question that business sets
+                            "type": "csat",
+                            "title": "Chất lượng dịch vụ của EMPTY ạ  ", // Optional. If business does not define, we show standard text. Standard text based on question type ("csat", "nps", "ces" >>> "text")
+                            "score_label": "neg_pos", // Optional
+                            "score_option": "five_stars", // Optional
+                            "follow_up": // Optional. Inherits the title and id from the previous question on the same page.  Only free-from input is allowed. No other title will show. 
+                            {
+                              "type": "free_form", 
+                              "placeholder": "Give additional feedback" // Optional
+                            }
+                          }]
+                        }],
+                        "business_privacy": 
+                        {
+                            "url": "https://www.example.com"
+                         },
+                        "expires_in_days" : 3 // Optional, default 1 day, business defines 1-7 days
+                      }
+                    }
+                  }
+            };
+            // Send the HTTP request to the Messenger Platform
+            request({
+                "uri": `https://graph.facebook.com/v7.0/me/messages?access_token=${PAGE_ACCESS_TOKEN}`,
+                "method": "POST",
+                "json": request_body
+            }, (err, res, body) => {
+                console.log(body)
+                if (!err) {
+                    resolve('SUCCESS!')
+                } else {
+                    reject("Unable to send message:" + err);
+                }
+            });
+        } catch (e) {
+            reject(e);
+        }
+    });
+};
+
+
+
 module.exports = {
     sendMessage: sendMessage,
     sendMessageWelcomeNewUser: sendMessageWelcomeNewUser,
@@ -303,5 +399,7 @@ module.exports = {
     backToCategories: backToCategories,
     backToMainMenu: backToMainMenu,
     passThreadControl: passThreadControl,
-    takeControlConversation: takeControlConversation
+    takeControlConversation: takeControlConversation,
+    sendQuickReply : sendQuickReply,
+    FEEDBACK : FEEDBACK
 };

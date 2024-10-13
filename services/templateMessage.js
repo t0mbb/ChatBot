@@ -7,7 +7,7 @@ let sendZALOOATemplate = () =>{
                 "elements": [
                     {
                         "title": "EMPTY ARENA BILLIARDS CUSTOMER SERVICES ",
-                        "image_url": "https://bit.ly/imageHeadphones",
+                        "image_url": "https://res.cloudinary.com/ddx8hv83x/image/upload/v1728461643/338859574_3427471284142607_6439415094304391260_n_1_gl2cu1.png",
                         "subtitle": "| CẮT CAM |",
                         "default_action": {
                             "type": "web_url",
@@ -23,7 +23,7 @@ let sendZALOOATemplate = () =>{
                             {
                                 "type": "postback",
                                 "title": "Quay Lại Menu",
-                                "payload": "RETURN_MAIN_MENU"
+                                "payload": "SEND_QUICKREPLY"
                             }
                         ]
                     },

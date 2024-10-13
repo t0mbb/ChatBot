@@ -35,6 +35,11 @@ let handleSetupProfileAPI = () => {
                                 "type": "postback",
                                 "title": "Bắt Đầu",
                                 "payload": "RESTART_CONVERSATION"
+                            },
+                            {
+                                "type" : "postback",
+                                "title" : "FEEDBACK",
+                                "payload" : "FEEDBACK"
                             }
                         ]
                     }

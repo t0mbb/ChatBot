@@ -188,6 +188,7 @@ function callSendAPI(sender_psid, response) {
       }
     }); 
   }
+  
 // Handles messaging_postbacks events
 let handlePostback = async (sender_psid, received_postback) => {
     // Get the payload for the postback
@@ -207,6 +208,12 @@ let handlePostback = async (sender_psid, received_postback) => {
             break;
         case "BACK_TO_MAIN_MENU":
             await chatbotService.backToMainMenu(sender_psid);
+            break;
+        case "SEND_QUICKREPLY":
+            await chatbotService.sendQuickReply(sender_psid);
+            break;
+        case "FEEDBACK":
+            await chatbotService.FEEDBACK(sender_psid);
             break;
         default:
             console.log("run default switch case")
