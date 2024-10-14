@@ -427,19 +427,31 @@ let DATBANTemplate = (sender_psid) => {
                               "label": "Tên Đại Diện Đặt Bàn"        
                             }
                           },
-                          {
-                            "email": {
-                              "required": true,
-                              "label": "Thời Gian ạ "        
-                            }
-                          },
-                          {
-                            "phone": {
-                              "required": true,
-                              "label": "SĐT của Khách iu ạ"        
-                            }
-                          },
                         ],
+                        "address_overrides": [
+                            {
+                                "overrides": [
+                                  {
+                                    "sublocality": {
+                                      "required": true,
+                                      "label": "Thời Gian Đặt Bàn Ạ"
+                                    }
+                                  }
+                                ]
+                              }, 
+                              {
+                                "country": "VN",
+                                "overrides": [
+                                  {
+                                    "address_line_2": {
+                                      "required": true,
+                                      "label": "SĐT Của Khách iu ạ "
+                                    }
+                                  }
+                                ]
+                              }
+                            ],
+        
                      
                         "business_privacy": {
                           "url": "https://www.facebook.com/privacy/explanation"
