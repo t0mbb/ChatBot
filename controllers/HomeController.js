@@ -68,7 +68,7 @@ let postWebhook = (req, res) => {
             console.log("",webhook_event);
 
 
-            if(webhook_event.messaging_feedback.feedback_screens){
+            if(webhook_event.messaging_feedback && webhook_event.messaging_feedback.feedback_screens){
                 console.log("vao day");
                 console.log(webhook_event.messaging_feedback.feedback_screens);
             }
