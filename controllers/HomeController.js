@@ -70,7 +70,7 @@ let postWebhook = (req, res) => {
 
             if(webhook_event.messaging_feedback && webhook_event.messaging_feedback.feedback_screens){
                 console.log("vao day");
-                console.log(webhook_event.messaging_feedback.feedback_screens);
+                console.log(JSON.stringify(webhook_event.messaging_feedback.feedback_screens, null, 2));
             }
 
             // Get the sender PSID
