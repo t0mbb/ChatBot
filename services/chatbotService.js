@@ -39,6 +39,11 @@ let sendMessageWelcomeNewUser = (sender_psid) => {
                     },
                     {
                         "content_type": "text",
+                        "title": "CTKM",
+                        "payload": "CTKM",
+                    },
+                    {
+                        "content_type": "text",
                         "title": "Hỏi Đáp ",
                         "payload": "TALK_AGENT",
                     },
@@ -52,11 +57,7 @@ let sendMessageWelcomeNewUser = (sender_psid) => {
                         "title": "FEEDBACK",
                         "payload": "FEEDBACK",
                     },
-                    {
-                        "content_type": "text",
-                        "title": "CTKM",
-                        "payload": "CTKM",
-                    },
+                 
                 ]
             };
 
@@ -450,13 +451,13 @@ let DATBANTemplate = (sender_psid) => {
             };
             // Send the HTTP request to the Messenger Platform
             request({
-                "uri": `https://graph.facebook.com/v7.0/${PAGE_ID}/messages?access_token=${PAGE_ACCESS_TOKEN}`,
+                "uri": `https://graph.facebook.com/v21.0/${PAGE_ID}/messages?access_token=${PAGE_ACCESS_TOKEN}`,
                 "method": "POST",
                 "json": request_body
             }, (err, res, body) => {
-        
+                    console.log(body);
                 if (!err) {
-                    resolve('SUCCESS SEND FEEDBACK FORMS!')
+                    resolve('SUCCESS SEND FORMS!')
                 } else {
                     reject("Unable to send message:" + err);
                 }
