@@ -434,23 +434,14 @@ let DATBANTemplate = (sender_psid) => {
                           },
                         ],
                         "address_overrides": [
-                            {
-                                "overrides": [
-                                  {
-                                    "postal_code": {
-                                      "required": true,
-                                      "label": "Thời Gian Đặt Bàn Ạ"
-                                    }
-                                  }
-                                ]
-                              }, 
+                            
                               {
                                 "country": "VN",
                                 "overrides": [
                                   {
                                     "address_line_2": {
                                       "required": true,
-                                      "label": "SĐT Của Khách iu ạ "
+                                      "label": "Thời Gian Đặt Bàn | SĐT Của Khách iu ạ "
                                     }
                                   }
                                 ]
