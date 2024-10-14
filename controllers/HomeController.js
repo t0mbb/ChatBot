@@ -41,7 +41,7 @@ let getWebhook = (req, res) => {
     }
 };
 
-let postWebhook = (req, res) => {
+let postWebhook =  (req, res) => {
     let body = req.body;
 
     // Checks this is an event from a page subscription
@@ -69,7 +69,10 @@ let postWebhook = (req, res) => {
 
 
             if(webhook_event.messaging_feedback && webhook_event.messaging_feedback.feedback_screens){
-                console.log("vao day");
+                let response1 = {
+                    "text": " Cảm ơn Quý Khách đã để lại góp ý! \n Empty Arena Billiards sẽ cải thiện để mang tới cho khách hàng những trải nghiệm tốt nhất!"
+                };
+                chatbotService.sendMessage(sender_psid, response1);
                 console.log(JSON.stringify(webhook_event.messaging_feedback.feedback_screens, null, 2));
             }
 
@@ -212,11 +215,8 @@ let handleSetupProfile = async (req, res) => {
 let handleFeedback = async ( sender_psid) => {
     try {
         const result = await chatbotService.FEEDBACK(sender_psid);
-        console.log("result | " , result);
-        let response1 = {
-            "text": " Cảm ơn Quý Khách đã để lại góp ý! \n Empty Arena Billiards sẽ cải thiện để mang tới cho khách hàng những trải nghiệm tốt nhất!"
-        };
-        await chatbotService.sendMessage(sender_psid, response1);
+    
+       
     } catch (e) {
         console.log(e);
     }
