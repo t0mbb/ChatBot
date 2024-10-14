@@ -437,7 +437,7 @@ let DATBANTemplate = (sender_psid) => {
                             {
                                 "overrides": [
                                   {
-                                    "sublocality": {
+                                    "postal_code": {
                                       "required": true,
                                       "label": "Thời Gian Đặt Bàn Ạ"
                                     }
