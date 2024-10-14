@@ -121,11 +121,16 @@ let handleMessage = async (sender_psid, received_message) => {
         if (payload === "ZALO_REF") {
             await chatbotService.sendZALOOATemplate(sender_psid);
 
-        } else if (payload === "LOOKUP_ORDER") {
-            await chatbotService.sendLookupOrder(sender_psid);
+        } else if (payload === "FEEDBACK") {
+            await handleFeedback(sender_psid);
 
         } else if (payload === "TALK_AGENT") {
             await chatbotService.requestTalkToAgent(sender_psid);
+        }
+         else if (payload === "CTKM") {
+            await chatbotService.handleCTKM(sender_psid);
+         } else if (payload === "DATBAN") {
+            await chatbotService.DATBANTemplate(sender_psid);
         }
        
 

@@ -52,6 +52,11 @@ let sendMessageWelcomeNewUser = (sender_psid) => {
                         "title": "FEEDBACK",
                         "payload": "FEEDBACK",
                     },
+                    {
+                        "content_type": "text",
+                        "title": "CTKM",
+                        "payload": "CTKM",
+                    },
                 ]
             };
 
