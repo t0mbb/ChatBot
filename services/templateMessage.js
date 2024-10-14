@@ -138,7 +138,7 @@ let setInfoOrderTemplate = ()=>{
 
 module.exports = {
     sendZALOOATemplate: sendZALOOATemplate,
-    sendHeadphonesTemplate: sendHeadphonesTemplate,
+   
     sendLookupOrderTemplate: sendLookupOrderTemplate,
     backToMainMenuTemplate: backToMainMenuTemplate,
     setInfoOrderTemplate: setInfoOrderTemplate,

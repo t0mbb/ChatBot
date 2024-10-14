@@ -179,8 +179,8 @@ let handlePostback = async (sender_psid, received_postback) => {
         case "ZALO_REF":
             await chatbotService.sendZALOOATemplate(sender_psid);
             break;
-        case "BACK_TO_MAIN_MENU":
-            await chatbotService.backToMainMenu(sender_psid);
+        case "DATBAN":
+            await chatbotService.DATBANTemplate(sender_psid);
             break;
         case "SEND_QUICKREPLY":
             await chatbotService.sendQuickReply(sender_psid);
