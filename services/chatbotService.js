@@ -325,6 +325,11 @@ let sendQuickReply = (sender_psid) => {
                     },
                     {
                         "content_type": "text",
+                        "title": "CTKM",
+                        "payload": "CTKM",
+                    },
+                    {
+                        "content_type": "text",
                         "title": "Hỏi Đáp ",
                         "payload": "TALK_AGENT",
                     },
@@ -335,7 +340,7 @@ let sendQuickReply = (sender_psid) => {
                     },
                     {
                         "content_type": "text",
-                        "title": "TESTING",
+                        "title": "FEEDBACK",
                         "payload": "FEEDBACK",
                     },
                 ]
