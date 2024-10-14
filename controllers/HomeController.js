@@ -72,8 +72,9 @@ let postWebhook =  (req, res) => {
                 let response1 = {
                     "text": " Cảm ơn Quý Khách đã để lại góp ý! \n Empty Arena Billiards sẽ cải thiện để mang tới cho khách hàng những trải nghiệm tốt nhất!"
                 };
-                chatbotService.sendMessage(sender_psid, response1);
+                chatbotService.sendMessage(webhook_event.sender.id, response1);
                 console.log(JSON.stringify(webhook_event.messaging_feedback.feedback_screens, null, 2));
+                console.log(webhook_event.messaging_feedback.feedback_screens)
             }
 
             // Get the sender PSID
@@ -143,32 +144,32 @@ let handleMessage = async (sender_psid, received_message) => {
 };
 
 
-function callSendAPI(sender_psid, response) {
-    // Construct the message body
+// function callSendAPI(sender_psid, response) {
+//     // Construct the message body
   
-    let request_body = {
-      "recipient": {
-        "id": sender_psid
-      },
+//     let request_body = {
+//       "recipient": {
+//         "id": sender_psid
+//       },
       
-      "message": response
-    }
+//       "message": response
+//     }
   
-    // Send the HTTP request to the Messenger Platform
-    request({
-      "uri": "https://graph.facebook.com/v2.6/me/messages",
-      "qs": { "access_token": process.env.PAGE_ACCESS_TOKEN},
-      "method": "POST",
-      "json": request_body
-    }, (err, res, body) => {
-      if (!err) {
-        console.log('message sent!')
+//     // Send the HTTP request to the Messenger Platform
+//     request({
+//       "uri": "https://graph.facebook.com/v2.6/me/messages",
+//       "qs": { "access_token": process.env.PAGE_ACCESS_TOKEN},
+//       "method": "POST",
+//       "json": request_body
+//     }, (err, res, body) => {
+//       if (!err) {
+//         console.log('message sent!')
    
-      } else {
-        console.error("Unable to send message:" + err);
-      }
-    }); 
-  }
+//       } else {
+//         console.error("Unable to send message:" + err);
+//       }
+//     }); 
+//   }
   
 // Handles messaging_postbacks events
 let handlePostback = async (sender_psid, received_postback) => {
@@ -214,14 +215,14 @@ let handleSetupProfile = async (req, res) => {
 
 let handleFeedback = async ( sender_psid) => {
     try {
-        const result = await chatbotService.FEEDBACK(sender_psid);
+       await chatbotService.FEEDBACK(sender_psid);
     
        
     } catch (e) {
         console.log(e);
     }
 };
-let sendRespond 
+
 let verify = async (req, res) => {
   
         return res.render("verify.ejs")
