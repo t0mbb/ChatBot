@@ -3,6 +3,7 @@ const request = require('request');
 var  homepageService = require ("../services/homepageService");
 var chatbotService = require("../services/chatbotService");
 var templateMessage = require ("../services/templateMessage");
+var feedbackModel = require("../models/feedback")
 
 require("dotenv").config();
 
@@ -77,6 +78,7 @@ let postWebhook =  (req, res) => {
                 const feedback = webhook_event.messaging_feedback.feedback_screens;
                 const rating = feedback.questions.fdback.payload;
                 const additional = feedback.questions.fdback.follow_up.payload;
+                saveFeedback(webhook_event.sender.id , rating , additional)
            
             }
 
@@ -139,7 +141,20 @@ let handleMessage = async (sender_psid, received_message) => {
 
 };
 
-
+let saveFeedback = async ( sender_psid, rating , additional) => {
+    try {
+       const username = await homepageService.getFacebookUsername(sender_psid);
+       await feedbackModel.create({
+        name : username ,
+        rating : rating, 
+        additional : additional
+       })
+        
+       
+    } catch (e) {
+        console.log(e);
+    }
+};
 // function callSendAPI(sender_psid, response) {
 //     // Construct the message body
   
