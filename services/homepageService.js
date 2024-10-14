@@ -20,6 +20,11 @@ let handleSetupProfileAPI = () => {
                                 "type": "postback",
                                 "title": "ĐẶT BÀN",
                                 "payload": "DATBAN"
+                            }, 
+                            {
+                                "type": "postback",
+                                "title": "CTKM Tại Empty",
+                                "payload": "CTKM"
                             },
                             {
                                 "type": "postback",
@@ -32,15 +37,16 @@ let handleSetupProfileAPI = () => {
                                 "payload": "TALK_AGENT"
                             },
                             {
+                                "type" : "postback",
+                                "title" : "FEEDBACK",
+                                "payload" : "FEEDBACK" 
+                            },
+                            {
                                 "type": "postback",
                                 "title": "Bắt Đầu",
                                 "payload": "RESTART_CONVERSATION"
                             },
-                            {
-                                "type" : "postback",
-                                "title" : "FEEDBACK",
-                                "payload" : "FEEDBACK" 
-                            }
+                          
                         ]
                     }
                 ],

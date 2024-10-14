@@ -34,7 +34,9 @@ let sendZALOOATemplate = () =>{
     };
 };
 
-let sendHeadphonesTemplate = () =>{
+
+
+let sendCTKMTemplate = () =>{
     return {
         "attachment": {
             "type": "template",
@@ -42,86 +44,23 @@ let sendHeadphonesTemplate = () =>{
                 "template_type": "generic",
                 "elements": [
                     {
-                        "title": "Sony Noise Cancelling Headphones WH1000XM3",
-                        "image_url": "https://bit.ly/imageHeadphone1a",
-                        "subtitle": "$348.00",
+                        "title": "CTKM Tháng 10 Của EMPTY ARENA BILLIARDS ",
+                        "image_url": "https://res.cloudinary.com/dwsqbwhnq/image/upload/v1728917595/CTKM_THANG_10_e8gscm.jpg",
+                        "subtitle": "  ▪️ 𝐓𝐡𝐚́𝐧𝐠 𝟏𝟎 𝐁𝐮̀𝐧𝐠 𝐍𝐨̂̉ 𝐯𝐨̛́𝐢 𝐂𝐓𝐊𝐌 - 𝐆𝐢𝐚́ 𝐂𝐡𝐢̉ 𝐓𝐮̛̀ 𝟑𝟓𝐤/𝐡▪️",
                         "default_action": {
                             "type": "web_url",
-                            "url": "https://bit.ly/viewHeadphone1",
+                            "url": "https://www.facebook.com/permalink.php?story_fbid=pfbid02kepfTJbv1kCZ44LdQqW3emRKuVRke28ZktibbYWbsgKU86qay3Zs6KD7JU8pZjkXl&id=61561715665445",
                             "webview_height_ratio": "tall",
                         },
                         "buttons": [
                             {
-                                "type": "web_url",
-                                "url": "https://bit.ly/viewHeadphone1",
-                                "title": "Order now"
-                            },
-                            {
                                 "type": "postback",
-                                "title": "Back to categories",
-                                "payload": "BACK_TO_CATEGORIES"
-                            },
-                            {
-                                "type": "postback",
-                                "title": "Main menu",
-                                "payload": "BACK_TO_MAIN_MENU"
+                                "title": "Quay Lại Menu",
+                                "payload": "SEND_QUICKREPLY"
                             }
                         ]
                     },
-                    {
-                        "title": "Sony WI-1000XM2 Industry Leading Noise Canceling Wireless Behind-Neck",
-                        "image_url": "https://bit.ly/imageHeadphone1b",
-                        "subtitle": "$298.00",
-                        "default_action": {
-                            "type": "web_url",
-                            "url": "https://bit.ly/viewHeadphone2",
-                            "webview_height_ratio": "tall",
-                        },
-                        "buttons": [
-                            {
-                                "type": "web_url",
-                                "url": "https://bit.ly/viewHeadphone2",
-                                "title": "Order now"
-                            },
-                            {
-                                "type": "postback",
-                                "title": "Back to categories",
-                                "payload": "BACK_TO_CATEGORIES"
-                            },
-                            {
-                                "type": "postback",
-                                "title": "Main menu",
-                                "payload": "BACK_TO_MAIN_MENU"
-                            }
-                        ]
-                    },
-                    {
-                        "title": "Sony Wireless in-Ear Headset",
-                        "image_url": "https://bit.ly/imageHeadphone1c",
-                        "subtitle": "$38.00",
-                        "default_action": {
-                            "type": "web_url",
-                            "url": "https://bit.ly/viewHeadphone3",
-                            "webview_height_ratio": "tall",
-                        },
-                        "buttons": [
-                            {
-                                "type": "web_url",
-                                "url": "https://bit.ly/viewHeadphone3",
-                                "title": "Order now"
-                            },
-                            {
-                                "type": "postback",
-                                "title": "Back to categories",
-                                "payload": "BACK_TO_CATEGORIES"
-                            },
-                            {
-                                "type": "postback",
-                                "title": "Main menu",
-                                "payload": "BACK_TO_MAIN_MENU"
-                            }
-                        ]
-                    },
+               
                 ]
             }
         }
@@ -202,5 +141,6 @@ module.exports = {
     sendHeadphonesTemplate: sendHeadphonesTemplate,
     sendLookupOrderTemplate: sendLookupOrderTemplate,
     backToMainMenuTemplate: backToMainMenuTemplate,
-    setInfoOrderTemplate: setInfoOrderTemplate
+    setInfoOrderTemplate: setInfoOrderTemplate,
+    sendCTKMTemplate : sendCTKMTemplate
 };

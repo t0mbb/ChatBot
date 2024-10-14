@@ -172,6 +172,19 @@ let sendZALOOATemplate = (sender_psid) => {
     });
 };
 
+let handleCTKM = (sender_psid) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            //send a generic template message
+            let response = templateMessage.sendCTKMTemplate();
+            await sendMessage(sender_psid, response);
+            resolve("done");
+        } catch (e) {
+            reject(e);
+        }
+    });
+}
+
 let sendLookupOrder = (sender_psid) => {
     return new Promise(async (resolve, reject) => {
         try {
@@ -402,5 +415,6 @@ module.exports = {
     passThreadControl: passThreadControl,
     takeControlConversation: takeControlConversation,
     sendQuickReply : sendQuickReply,
-    FEEDBACK : FEEDBACK
+    FEEDBACK : FEEDBACK,
+    handleCTKM : handleCTKM
 };

@@ -70,11 +70,14 @@ let postWebhook =  (req, res) => {
 
             if(webhook_event.messaging_feedback && webhook_event.messaging_feedback.feedback_screens){
                 let response1 = {
-                    "text": " Cảm ơn Quý Khách đã để lại góp ý! \n Empty Arena Billiards sẽ cải thiện để mang tới cho khách hàng những trải nghiệm tốt nhất!"
+                    "text": " Cảm ơn Quý Khách đã để lại góp ý! \n \nEmpty Arena Billiards sẽ cải thiện để mang tới cho khách hàng những trải nghiệm tốt nhất!"
                 };
                 chatbotService.sendMessage(webhook_event.sender.id, response1);
                 console.log(JSON.stringify(webhook_event.messaging_feedback.feedback_screens, null, 2));
-                console.log(webhook_event.messaging_feedback.feedback_screens)
+                const feedback = webhook_event.messaging_feedback.feedback_screens;
+                const rating = feedback.questions.fdback.payload;
+                const additional = feedback.questions.fdback.follow_up.payload;
+           
             }
 
             // Get the sender PSID
@@ -124,23 +127,11 @@ let handleMessage = async (sender_psid, received_message) => {
         } else if (payload === "TALK_AGENT") {
             await chatbotService.requestTalkToAgent(sender_psid);
         }
+       
 
         return;
     }
 
-
-    let response;
-
-    // Check if the message contains text
-    if (received_message.text) {
-        // Create the payload for a basic text message
-        response = {
-            "text": `Hiện tại tin nhắn của bạn đang không trong Form của hệ thống vui lòng bấm Bắt Đầu để nhắn lại | \n Hoặc bạn muốn tư vấn trực tiếp vui lòng chọn Hỏi Đáp ! `
-        }
-    } 
-
-    // Sends the response message
-    await chatbotService.sendMessage(sender_psid, response);
 };
 
 
@@ -196,8 +187,11 @@ let handlePostback = async (sender_psid, received_postback) => {
             break;
         case "FEEDBACK":
              await handleFeedback(sender_psid);
-        
             break;
+        case "CTKM":
+            await chatbotService.handleCTKM(sender_psid);
+            break;
+        
         default:
             console.log("run default switch case")
 
