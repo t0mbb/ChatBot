@@ -429,25 +429,11 @@ let DATBANTemplate = (sender_psid) => {
                           {
                             "name": {
                               "required": true,
-                              "label": "Tên Đại Diện Đặt Bàn"        
+                              "label": "Tên Đại Diện | Thời Gian | SĐT Đặt Bàn ạ"        
                             }
                           },
                         ],
-                        "address_overrides": [
-                            
-                              {
-                                "country": "VN",
-                                "overrides": [
-                                  {
-                                    "address_line_2": {
-                                      "required": true,
-                                      "label": "Thời Gian Đặt Bàn | SĐT Của Khách iu ạ "
-                                    }
-                                  }
-                                ]
-                              }
-                            ],
-        
+                       
                      
                         "business_privacy": {
                           "url": "https://www.facebook.com/privacy/explanation"
