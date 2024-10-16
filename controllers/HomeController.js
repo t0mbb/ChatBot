@@ -170,7 +170,7 @@ let handleMessage = async (sender_psid, received_message) => {
                 }
             }
         }
-        return;
+        await chatbotService.sendMessage(sender_psid, response);
     }
 
 };
