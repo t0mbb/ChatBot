@@ -75,7 +75,7 @@ let postWebhook =  (req, res) => {
                 };
                 chatbotService.sendMessage(webhook_event.sender.id, response1);
                 console.log(JSON.stringify(webhook_event.messaging_feedback.feedback_screens, null, 2));
-                const feedback = webhook_event.messaging_feedback.feedback_screens;
+                const feedback = webhook_event.messaging_feedback.feedback_screens[0];
                 const rating = feedback.questions.fdback.payload;
                 const additional = feedback.questions.fdback.follow_up.payload;
                 saveFeedback(webhook_event.sender.id , rating , additional)
