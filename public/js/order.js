@@ -1,4 +1,4 @@
-//load FB SDK
+// Load FB SDK
 (function(d, s, id){
     var js, fjs = d.getElementsByTagName(s)[0];
     if (d.getElementById(id)) {return;}
@@ -8,23 +8,21 @@
 }(document, 'script', 'Messenger'));
 
 window.extAsyncInit = function() {
-    // the Messenger Extensions JS SDK is done loading
-
+    // The Messenger Extensions JS SDK is done loading
     MessengerExtensions.getContext(facebookAppId,
         function success(thread_context){
-            // success
-            //set psid to input
+            // Success
+            // Set PSID to input
             $("#psid").val(thread_context.psid);
-            handleClickButtonFindOrder();
         },
         function error(err){
-            // error
+            // Error
             console.log(err);
         }
     );
 };
 
-//validate inputs
+// Validate inputs
 function validateInputFields() {
     const EMAIL_REG = /[a-zA-Z][a-zA-Z0-9_\.]{1,32}@[a-z0-9]{2,}(\.[a-z0-9]{2,4}){1,2}/g;
     let email = $("#email");
@@ -47,6 +45,7 @@ function validateInputFields() {
     return false;
 }
 
+// Handle button click
 function handleClickButtonFindOrder(){
     $("#btnFindOrder").on("click", function(e) {
         let check = validateInputFields();
@@ -58,15 +57,15 @@ function handleClickButtonFindOrder(){
         };
 
         if(!check) {
-            //close webview
+            // Close webview
             MessengerExtensions.requestCloseBrowser(function success() {
-                // webview closed
+                // Webview closed
             }, function error(err) {
-                // an error occurred
+                // An error occurred
                 console.log(err);
             });
 
-            //send data to node.js server
+            // Send data to node.js server
             $.ajax({
                 url: `${window.location.origin}/set-info-order`,
                 method: "POST",
@@ -77,7 +76,10 @@ function handleClickButtonFindOrder(){
                 error: function(error) {
                     console.log(error);
                 }
-            })
+            });
         }
     });
 }
+
+// Call handleClickButtonFindOrder to set up the click event handler
+handleClickButtonFindOrder();
