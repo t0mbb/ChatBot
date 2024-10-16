@@ -71,7 +71,7 @@ let postWebhook =  (req, res) => {
 
             if(webhook_event.messaging_feedback && webhook_event.messaging_feedback.feedback_screens){
                 let response1 = {
-                    "text": " Cảm ơn Quý Khách đã để lại góp ý! \n \nEmpty Arena Billiards sẽ cải thiện để mang tới cho khách hàng những trải nghiệm tốt nhất!"
+                    "text": " Cảm ơn Quý Khách đã để lại góp ý! \n\nEmpty Arena Billiards sẽ cải thiện để mang tới cho khách hàng những trải nghiệm tốt nhất!"
                 };
                 chatbotService.sendMessage(webhook_event.sender.id, response1);
                 console.log(JSON.stringify(webhook_event.messaging_feedback.feedback_screens, null, 2));
@@ -177,12 +177,12 @@ let handleMessage = async (sender_psid, received_message) => {
 let saveFeedback = async ( sender_psid, rating , additional) => {
     try {
        const username = await homepageService.getFacebookUsername(sender_psid);
-       await feedbackModel.create({
+       const result = await feedbackModel.create({
         name : username ,
         rating : rating, 
         additional : additional
        })
-        
+        console.log(result);
        
     } catch (e) {
         console.log(e);
