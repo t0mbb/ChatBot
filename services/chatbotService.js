@@ -11,10 +11,10 @@ const PAGE_ID = process.env.PAGE_ID
 let sendMessageWelcomeNewUser = (sender_psid) => {
     return new Promise(async (resolve, reject) => {
         try {
-            let username = await homepageService.getFacebookUsername(sender_psid);
+       
             //send text message
             let response1 = {
-                "text": `Empty Arena Billiards Hà Nội rất hân hạnh được phục vụ quý khách ${username} !`
+                "text": `Empty Arena Billiards Hà Nội rất hân hạnh được phục vụ quý khách !`
             };
 
             //send an image
@@ -204,37 +204,7 @@ let sendLookupOrder = (sender_psid) => {
     });
 };
 
-let showHeadphones = (sender_psid) => {
-    return new Promise(async (resolve, reject) => {
-        try {
-            let response = templateMessage.sendHeadphonesTemplate();
-            await sendMessage(sender_psid, response);
-            resolve("done");
-        } catch (e) {
-            reject(e);
-        }
-    })
-};
 
-let showTVs = (sender_psid) => {
-    return new Promise((resolve, reject) => {
-        try {
-            resolve("done");
-        } catch (e) {
-            reject(e);
-        }
-    })
-};
-
-let showPlaystation = (sender_psid) => {
-    return new Promise((resolve, reject) => {
-        try {
-            resolve("done");
-        } catch (e) {
-            reject(e);
-        }
-    })
-};
 
 let backToCategories = (sender_psid) => {
     sendCategories(sender_psid)
@@ -470,9 +440,6 @@ module.exports = {
     sendZALOOATemplate : sendZALOOATemplate,
     sendLookupOrder: sendLookupOrder,
     requestTalkToAgent: requestTalkToAgent,
-    showHeadphones: showHeadphones,
-    showTVs: showTVs,
-    showPlaystation: showPlaystation,
     backToCategories: backToCategories,
     backToMainMenu: backToMainMenu,
     passThreadControl: passThreadControl,

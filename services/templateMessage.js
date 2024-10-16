@@ -73,25 +73,27 @@ let sendLookupOrderTemplate = () =>{
             "type":"template",
             "payload":{
                 "template_type":"button",
-                "text":"OK. Let's set info about your order, so I won't need to ask for them in the future.",
+                "text":"Khách iu chọn nút đặt bàn và điền thông tin ",
                 "buttons":[
                     {
                         "type": "web_url",
                         "url": `${process.env.URL_WEB_VIEW_ORDER}`,
-                        "title": "Set info",
+                        "title": "ĐẶT BÀN",
                         "webview_height_ratio": "tall",
                         "messenger_extensions": true //false: open the webview in new tab
                     },
                     {
                         "type": "postback",
-                        "title": "Main menu",
-                        "payload": "BACK_TO_MAIN_MENU"
+                        "title": "Quay lại Menu",
+                        "payload": "SEND_QUICKREPLY"
                     }
                 ]
             }
         }
     };
 };
+
+
 
 let backToMainMenuTemplate = ()=>{
     return {
@@ -116,7 +118,7 @@ let backToMainMenuTemplate = ()=>{
     };
 };
 
-let setInfoOrderTemplate = ()=>{
+let setDatbanTemplate = ()=>{
     return {
         "attachment":{
             "type":"template",
@@ -141,6 +143,6 @@ module.exports = {
    
     sendLookupOrderTemplate: sendLookupOrderTemplate,
     backToMainMenuTemplate: backToMainMenuTemplate,
-    setInfoOrderTemplate: setInfoOrderTemplate,
+    setDatbanTemplate: setDatbanTemplate,
     sendCTKMTemplate : sendCTKMTemplate
 };

@@ -132,7 +132,7 @@ let handleMessage = async (sender_psid, received_message) => {
          else if (payload === "CTKM") {
             await chatbotService.handleCTKM(sender_psid);
          } else if (payload === "DATBAN") {
-            await chatbotService.DATBANTemplate(sender_psid);
+            await chatbotService.sendLookupOrder(sender_psid);
         }
     }
     let response ;
@@ -233,7 +233,7 @@ let handlePostback = async (sender_psid, received_postback) => {
             await chatbotService.sendZALOOATemplate(sender_psid);
             break;
         case "DATBAN":
-            await chatbotService.DATBANTemplate(sender_psid);
+            await chatbotService.sendLookupOrder(sender_psid);
             break;
         case "SEND_QUICKREPLY":
             await chatbotService.sendQuickReply(sender_psid);
