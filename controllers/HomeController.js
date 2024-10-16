@@ -134,44 +134,43 @@ let handleMessage = async (sender_psid, received_message) => {
          } else if (payload === "DATBAN") {
             await chatbotService.DATBANTemplate(sender_psid);
         }
-       
-        let response ;
-        if (received_message.text) {
-            // Create the payload for a basic text message
-            response = {
-                "text": `Cảm ơn bạn vì đã gửi tin nhắn đến Empty Arena Billiards !\nChúng tôi sẽ phản hồi lại bạn khi Online!`
-            }
-        } else if (received_message.attachments) {
-            // Get the URL of the message attachment
-            let attachment_url = received_message.attachments[0].payload.url;
-            response = {
-                "attachment": {
-                    "type": "template",
-                    "payload": {
-                        "template_type": "generic",
-                        "elements": [{
-                            "title": "Is this the right picture?",
-                            "subtitle": "Tap a button to answer.",
-                            "image_url": attachment_url,
-                            "buttons": [
-                                {
-                                    "type": "postback",
-                                    "title": "Yes!",
-                                    "payload": "yes",
-                                },
-                                {
-                                    "type": "postback",
-                                    "title": "No!",
-                                    "payload": "no",
-                                }
-                            ],
-                        }]
-                    }
+    }
+    let response ;
+    if (received_message.text) {
+        // Create the payload for a basic text message
+        response = {
+            "text": `Cảm ơn bạn vì đã gửi tin nhắn đến Empty Arena Billiards !\nChúng tôi sẽ phản hồi lại bạn khi Online!`
+        }
+    } else if (received_message.attachments) {
+        // Get the URL of the message attachment
+        let attachment_url = received_message.attachments[0].payload.url;
+        response = {
+            "attachment": {
+                "type": "template",
+                "payload": {
+                    "template_type": "generic",
+                    "elements": [{
+                        "title": "Is this the right picture?",
+                        "subtitle": "Tap a button to answer.",
+                        "image_url": attachment_url,
+                        "buttons": [
+                            {
+                                "type": "postback",
+                                "title": "Yes!",
+                                "payload": "yes",
+                            },
+                            {
+                                "type": "postback",
+                                "title": "No!",
+                                "payload": "no",
+                            }
+                        ],
+                    }]
                 }
             }
         }
-        await chatbotService.sendMessage(sender_psid, response);
     }
+    await chatbotService.sendMessage(sender_psid, response);
 
 };
 
