@@ -135,42 +135,42 @@ let handleMessage = async (sender_psid, received_message) => {
             await chatbotService.sendLookupOrder(sender_psid);
         }
     }
-    let response ;
-    if (received_message.text) {
-        // Create the payload for a basic text message
-        response = {
-            "text": `Cảm ơn bạn vì đã gửi tin nhắn đến Empty Arena Billiards !\nChúng tôi sẽ phản hồi lại bạn khi Online!`
-        }
-    } else if (received_message.attachments) {
-        // Get the URL of the message attachment
-        let attachment_url = received_message.attachments[0].payload.url;
-        response = {
-            "attachment": {
-                "type": "template",
-                "payload": {
-                    "template_type": "generic",
-                    "elements": [{
-                        "title": "Is this the right picture?",
-                        "subtitle": "Tap a button to answer.",
-                        "image_url": attachment_url,
-                        "buttons": [
-                            {
-                                "type": "postback",
-                                "title": "Yes!",
-                                "payload": "yes",
-                            },
-                            {
-                                "type": "postback",
-                                "title": "No!",
-                                "payload": "no",
-                            }
-                        ],
-                    }]
-                }
-            }
-        }
-    }
-    await chatbotService.sendMessage(sender_psid, response);
+    // let response ;
+    // if (received_message.text) {
+    //     // Create the payload for a basic text message
+    //     response = {
+    //         "text": `Cảm ơn bạn vì đã gửi tin nhắn đến Empty Arena Billiards !\nChúng tôi sẽ phản hồi lại bạn khi Online!`
+    //     }
+    // } else if (received_message.attachments) {
+    //     // Get the URL of the message attachment
+    //     let attachment_url = received_message.attachments[0].payload.url;
+    //     response = {
+    //         "attachment": {
+    //             "type": "template",
+    //             "payload": {
+    //                 "template_type": "generic",
+    //                 "elements": [{
+    //                     "title": "Is this the right picture?",
+    //                     "subtitle": "Tap a button to answer.",
+    //                     "image_url": attachment_url,
+    //                     "buttons": [
+    //                         {
+    //                             "type": "postback",
+    //                             "title": "Yes!",
+    //                             "payload": "yes",
+    //                         },
+    //                         {
+    //                             "type": "postback",
+    //                             "title": "No!",
+    //                             "payload": "no",
+    //                         }
+    //                     ],
+    //                 }]
+    //             }
+    //         }
+    //     }
+    // }
+    // await chatbotService.sendMessage(sender_psid, response);
 
 };
 
@@ -294,14 +294,14 @@ let setInfoOrder = async (req, res) => {
             customerName = "Empty";
         } else customerName = req.body.customerName;
 
-        // I demo response with sample text
-        // you can check database for customer order's status
 
         let response1 = {
-            "text": `---Info about your lookup order---
-            \nCustomer name: ${customerName}
-            \nEmail address: ${req.body.email}
-            \nOrder number: ${req.body.orderNumber}
+            "text": `----- Empty xin gửi lại thông tin Đặt Bàn -----
+            \nAnh/Chị |  ${customerName}
+            \n
+            \nĐặt lúc : ${req.body.time}
+            \n
+            \nSĐT : ${req.body.orderNumber}
             `
         };
 
@@ -311,7 +311,7 @@ let setInfoOrder = async (req, res) => {
         await chatbotService.sendMessage(req.body.psid, response2);
 
         return res.status(200).json({
-            message: "ok"
+            message: "Co Lich Dat Ban Moi"
         });
     } catch (e) {
         console.log(e);

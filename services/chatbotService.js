@@ -30,7 +30,7 @@ let sendMessageWelcomeNewUser = (sender_psid) => {
 
             //send a quick reply
             let response3 = {
-                "text": "Vui lòng chọn theo MENU để Empty phục vụ khách iu ạ",
+                "text": "Vui lòng chọn theo MENU để Empty phục vụ Quý Khách ạ",
                 "quick_replies": [
                     {
                         "content_type": "text",
@@ -286,7 +286,7 @@ let sendQuickReply = (sender_psid) => {
         try {
             //send a quick reply
             let response3 = {
-                "text": "Vui lòng chọn theo MENU để Empty phục vụ khách iu ạ",
+                "text": "Vui lòng chọn theo MENU để Empty phục vụ Quý Khách ạ",
                 "quick_replies": [
                     {
                         "content_type": "text",
@@ -337,7 +337,7 @@ let FEEDBACK = (sender_psid) => {
                         "template_type": "customer_feedback",
                         //image
                         "title": "FEEDBACK", // Business needs to define. 
-                        "subtitle": "Khách iu cho chúng mình xin Feedback nhé ạ ", // Business needs to define. 
+                        "subtitle": "Quý Khách cho chúng mình xin Feedback nhé ạ ", // Business needs to define. 
                         "button_title": "FeedBack", // Business needs to define. 
                         "feedback_screens": [{
                           "questions":[{

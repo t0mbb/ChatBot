@@ -138,9 +138,29 @@ let setDatbanTemplate = ()=>{
     };
 };
 
+let setInfoOrderTemplate = ()=>{
+    return {
+        "attachment":{
+            "type":"template",
+            "payload":{
+                "template_type":"button",
+                "text":"Bên mình đã note lịch và sẽ giữ bàn cho quý khách trong 10 phút, mình vui lòng qua đúng giờ nhé ạ ♥️" +
+                    "\nEmpty xin cảm ơn Quý Khách!",
+                "buttons":[
+                    {
+                        "type": "postback",
+                        "title": "Quay Lại Menu Chính",
+                        "payload": "SEND_QUICKREPLY"
+                    }
+                ]
+            }
+        }
+    };
+};
+
 module.exports = {
     sendZALOOATemplate: sendZALOOATemplate,
-   
+    setInfoOrderTemplate:setInfoOrderTemplate,
     sendLookupOrderTemplate: sendLookupOrderTemplate,
     backToMainMenuTemplate: backToMainMenuTemplate,
     setDatbanTemplate: setDatbanTemplate,
