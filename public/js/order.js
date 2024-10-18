@@ -1,28 +1,26 @@
-// Load FB SDK
 (function(d, s, id){
     var js, fjs = d.getElementsByTagName(s)[0];
     if (d.getElementById(id)) {return;}
     js = d.createElement(s); js.id = id;
     js.src = "//connect.facebook.net/en_US/messenger.Extensions.js";
     fjs.parentNode.insertBefore(js, fjs);
+    console.log("Messenger SDK is being loaded");
 }(document, 'script', 'Messenger'));
 
 window.extAsyncInit = function() {
-    // The Messenger Extensions JS SDK is done loading
     MessengerExtensions.getContext(facebookAppId,
         function success(thread_context){
-            // Success
-            // Set PSID to input
+            console.log("PSID received:", thread_context.psid); // Log PSID
             $("#psid").val(thread_context.psid);
         },
         function error(err){
-            // Error
-            console.log(err);
+            console.error("Error fetching PSID:", err); // Log error
+            alert("Unable to retrieve Messenger context. Please open the link in Messenger.");
         }
     );
 };
 
-// Validate inputs
+// Validate inputs and handle order submission
 function validateInputFields() {
     const EMAIL_REG = /[a-zA-Z][a-zA-Z0-9_\.]{1,32}@[a-z0-9]{2,}(\.[a-z0-9]{2,4}){1,2}/g;
     let email = $("#email");
@@ -45,7 +43,6 @@ function validateInputFields() {
     return false;
 }
 
-// Handle button click
 function handleClickButtonFindOrder(){
     $("#btnFindOrder").on("click", function(e) {
         let check = validateInputFields();
@@ -61,7 +58,6 @@ function handleClickButtonFindOrder(){
             MessengerExtensions.requestCloseBrowser(function success() {
                 // Webview closed
             }, function error(err) {
-                // An error occurred
                 console.log(err);
             });
 
@@ -71,15 +67,14 @@ function handleClickButtonFindOrder(){
                 method: "POST",
                 data: data,
                 success: function(data) {
-                    console.log(data);
+                    console.log("Data submitted:", data);
                 },
                 error: function(error) {
-                    console.log(error);
+                    console.log("Error submitting data:", error);
                 }
             });
         }
     });
 }
 
-// Call handleClickButtonFindOrder to set up the click event handler
 handleClickButtonFindOrder();

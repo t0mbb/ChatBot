@@ -78,7 +78,7 @@ let postWebhook =  (req, res) => {
                 const feedback = webhook_event.messaging_feedback.feedback_screens[0];
                 const rating = feedback.questions.fdback.payload;
                 const additional = feedback.questions.fdback.follow_up.payload;
-                console.log(additional);
+       
                 saveFeedback(webhook_event.sender.id , rating , additional)
            
             }
@@ -181,7 +181,7 @@ let saveFeedback = async ( sender_psid, rating , additional) => {
        const result = await feedbackModel.create({
         name : username ,
         rating : rating, 
-        additional : additional
+        addtional : additional
        })
         console.log(result);
        
