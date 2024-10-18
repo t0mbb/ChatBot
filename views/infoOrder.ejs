@@ -12,41 +12,11 @@
     <script>
         let facebookAppId = "<%= facebookAppId %>"
         console.log("Facebook App ID from EJS:", facebookAppId);
+        let psid = "<%= psid %>"
+        console.log(psid);
     </script>
     
-    <script src="js/order.js"></script>
-    <script>
-        (function(d, s, id){
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) {return;}
-            js = d.createElement(s); js.id = id;
-            js.src = "//connect.facebook.net/en_US/messenger.Extensions.js";
-            fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'Messenger'));
-
-        window.extAsyncInit = function() {
-            // The Messenger Extensions JS SDK is done loading
-//             MessengerExtensions.getContext(facebookAppId, 
-//   function success(thread_context){
-//     console.log("12344",thread_context)
-//   },
-//   function error(err){
-//     console.log("err" , err)
-//   }
-// );
-MessengerExtensions.getSupportedFeatures(function success(result) {
-  let features = result.supported_features;
-  console.log(features)
-}, function error(err) {
-  // error retrieving supported features
-});
-        };
-
-        function fallbackForTesting() {
-            console.log("Fallback: Testing outside Messenger.");
-            $("#psid").val("TEST_PSID");
-        }
-    </script>
+   
 </head>
 <body>
 <div class="container fix-height">
@@ -66,7 +36,7 @@ MessengerExtensions.getSupportedFeatures(function success(result) {
               </div>
           <h2>Đặt Bàn | Empty Arena HN</h2>
           <form method="POST" action="/set-info-order">
-            <input type="text" id="psid" name = "psid" hidden>
+            <input type="text" id="psid" name = "psid" value="<%= psid %>" hidden>
           
             <label>
               <span>Tên Đại Diện</span>

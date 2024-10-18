@@ -1,0 +1,90 @@
+/* Ensure the form takes the full height of the screen */
+body {
+    font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+    background-image: url("../../images/emptyDNbg.jpg");
+    background-position: center center;
+    background-size : cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 100vh; /* Full screen height */
+    margin: 0;
+}
+
+.container.fix-height {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.cont {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    width: 100%;
+    max-width: 500px; /* Max width for better readability on larger screens */
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+label {
+    display: block;
+    width: 100%;
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+label span {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: #333;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 5px;
+    box-sizing: border-box;
+}
+
+input.is-invalid {
+    border-color: red;
+}
+
+.invalid-feedback {
+    display: none;
+    color: red;
+    font-size: 12px;
+}
+
+input.is-invalid + .invalid-feedback {
+    display: block;
+}
+
+button.submit {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #d4af7a;
+    color: #fff;
+    border-radius: 4px;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+    text-transform: uppercase;
+}
+
+button.submit:hover {
+    background-color: #b08b63;
+}
