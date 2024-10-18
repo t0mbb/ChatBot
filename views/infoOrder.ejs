@@ -26,14 +26,19 @@
 
         window.extAsyncInit = function() {
             // The Messenger Extensions JS SDK is done loading
-            MessengerExtensions.getContext(facebookAppId, 
-  function success(thread_context){
-    console.log("12344",thread_context)
-  },
-  function error(err){
-    console.log("err" , err)
-  }
-);
+//             MessengerExtensions.getContext(facebookAppId, 
+//   function success(thread_context){
+//     console.log("12344",thread_context)
+//   },
+//   function error(err){
+//     console.log("err" , err)
+//   }
+// );
+MessengerExtensions.getSupportedFeatures(function success(result) {
+  let features = result.supported_features;
+}, function error(err) {
+  // error retrieving supported features
+});
         };
 
         function fallbackForTesting() {
