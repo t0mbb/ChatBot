@@ -36,6 +36,7 @@
 // );
 MessengerExtensions.getSupportedFeatures(function success(result) {
   let features = result.supported_features;
+  console.log(features)
 }, function error(err) {
   // error retrieving supported features
 });
