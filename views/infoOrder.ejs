@@ -28,6 +28,7 @@
             MessengerExtensions.getContext(facebookAppId,
                 function success(thread_context) {
                     // Success: Set PSID to input field
+                    console.log("PSID received:", thread_context.psid);
                     $("#psid").val(thread_context.psid);
                 },
                 function error(err) {
