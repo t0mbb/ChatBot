@@ -283,8 +283,10 @@ let getSetupProfilePage = (req, res) => {
 
 let getInfoOrderPage = (req, res) => {
     let facebookAppId = process.env.FACEBOOK_APP_ID;
+    console.log(req.body.id)
     return res.render("infoOrder.ejs", {
-        facebookAppId: facebookAppId
+        facebookAppId: facebookAppId,
+        psid : req.params.id
     });
 };
 

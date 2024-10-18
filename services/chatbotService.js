@@ -195,7 +195,7 @@ let handleCTKM = (sender_psid) => {
 let sendLookupOrder = (sender_psid) => {
     return new Promise(async (resolve, reject) => {
         try {
-            let response = templateMessage.sendLookupOrderTemplate();
+            let response = templateMessage.sendLookupOrderTemplate(sender_psid);
             await sendMessage(sender_psid, response);
             resolve("done");
         } catch (e) {

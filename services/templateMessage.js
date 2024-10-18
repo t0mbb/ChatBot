@@ -67,7 +67,7 @@ let sendCTKMTemplate = () =>{
     };
 };
 
-let sendLookupOrderTemplate = () =>{
+let sendLookupOrderTemplate = (senderID) =>{
     return {
         "attachment":{
             "type":"template",
@@ -77,7 +77,7 @@ let sendLookupOrderTemplate = () =>{
                 "buttons":[
                     {
                         "type": "web_url",
-                        "url": `${process.env.URL_WEB_VIEW_ORDER}`,
+                        "url": `${process.env.URL_WEB_VIEW_ORDER}?senderID=${senderID}`,
                         "title": "ĐẶT BÀN",
                         "webview_height_ratio": "tall",
                         "messenger_extensions": true //false: open the webview in new tab
