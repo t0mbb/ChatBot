@@ -26,23 +26,14 @@
 
         window.extAsyncInit = function() {
             // The Messenger Extensions JS SDK is done loading
-            MessengerExtensions.getContext(facebookAppId,
-                function success(thread_context) {
-                    // Success: Set PSID to input field
-                    console.log("PSID received:", thread_context.psid);
-                    $("#psid").val(thread_context.psid);
-                },
-                function error(err) {
-            console.error("Error fetching PSID:", err);
-            // Additional error details
-            if (err.message) {
-                console.error("Error message:", err.message);
-            }
-            if (err.code) {
-                console.error("Error code:", err.code);
-            }
-        }
-            );
+            MessengerExtensions.getContext(facebookAppId, 
+  function success(thread_context){
+    console.log("12344",thread_context)
+  },
+  function error(err){
+    console.log("err" , err)
+  }
+);
         };
 
         function fallbackForTesting() {
