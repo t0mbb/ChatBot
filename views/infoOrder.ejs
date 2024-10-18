@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="css/style.css">
     <script>
         let facebookAppId = "<%= facebookAppId %>"
+        console.log("Facebook App ID from EJS:", facebookAppId);
     </script>
     
     <script src="js/order.js"></script>
@@ -37,6 +38,11 @@
                 }
             );
         };
+
+        function fallbackForTesting() {
+            console.log("Fallback: Testing outside Messenger.");
+            $("#psid").val("TEST_PSID");
+        }
     </script>
 </head>
 <body>
@@ -57,7 +63,7 @@
               </div>
           <h2>Đặt Bàn | Empty Arena HN</h2>
           <form method="POST" action="/set-info-order">
-            <input type="text" id="psid" hidden>
+            <input type="text" id="psid" name = "psid" hidden>
           
             <label>
               <span>Tên Đại Diện</span>
