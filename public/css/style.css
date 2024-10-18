@@ -13,54 +13,100 @@ body {
 .fix-height {
     flex: 1;
 }
+@media (max-width: 480px) {
+    .cont {
+        width: 90vw; /* Almost full width */
+        height: 90vh; /* Almost full height */
+        min-width: 250px; /* Avoid shrinking too much */
+        min-height: 350px;
+    }
+
+    .form {
+        width: 90%; /* Adjust form width */
+        padding: 10px; /* Smaller padding */
+    }
+
+    .img {
+        width: 60px; /* Further reduce image size */
+        padding-top: 150px;
+    }
+
+    .submit, .fb-btn, button {
+        width: 100%; /* Full width buttons */
+    }
+
+    .img__text h2, h2 {
+        font-size: 18px;
+    }
+
+    .label span {
+        font-size: 10px;
+    }
+
+    .icon-link {
+        width: 15px;
+    }
+}
 input, button {
     border: none;
     outline: none;
     background: none;
     font-family: 'Open Sans', Helvetica, Arial, sans-serif;
 }
+
+input {
+    width: 100%; /* Make input take full width */
+    font-size: 1rem; /* Scale based on screen size */
+}
+
+
 .tip {
-    font-size: 16px;
-    margin: 20px auto 30px;
+    font-size: 20px;
+    margin: 40px auto 50px;
     text-align: center;
 }
 .cont {
     overflow: hidden;
     position: relative;
-    width: 405px; /* Adjusted width */
-    height: 604px; /* Adjusted height */
-    margin: 0 auto 50px;
+    width: 60vw; /* 60% of viewport width */
+    height: 70vh; /* 70% of viewport height */
+    margin: 0 auto;
     background: #fff;
+    max-width: 900px; /* Ensure it doesn't get too large on big screens */
+    max-height: 550px; /* Ensure it doesn't get too large on big screens */
+    min-width: 300px;  /* Ensure it doesn't shrink too much */
+    min-height: 400px; /* Ensure it doesn't shrink too much */
 }
+
 .form {
     position: relative;
-    width: 270px; /* Adjusted width */
+    width: 65%; /* 65% of the container width */
     height: 100%;
     transition: transform 1.2s ease-in-out;
-    padding: 30px 15px 0;
+    padding: 5%;
 }
 .sub-cont {
     overflow: hidden;
     position: absolute;
-    left: 270px; /* Adjusted for the new width */
+    left: 640px;
     top: 0;
-    width: 405px; /* Adjusted for the container width */
+    width: 900px;
     height: 100%;
-    padding-left: 135px; /* Adjusted for width scale */
+    padding-left: 260px;
     background: #fff;
     transition: transform 1.2s ease-in-out;
 }
 .cont.s--signup .sub-cont {
-    transform: translate3d(-270px, 0, 0); /* Adjusted for width scale */
+    transform: translate3d(-640px, 0, 0);
 }
 button {
     display: block;
     margin: 0 auto;
-    width: 135px; /* Adjusted width */
+    width: 260px;
     height: 36px;
     border-radius: 30px;
     color: #fff;
-    font-size: 13px; /* Adjusted font size */
+    font-size: 15px;
     cursor: pointer;
 }
 .img {
@@ -69,16 +115,16 @@ button {
     position: absolute;
     left: 0;
     top: 0;
-    width: 135px; /* Adjusted width */
+    width: 260px;
     height: 100%;
-    padding-top: 240px; /* Adjusted padding */
+    padding-top: 360px;
 }
 .img:before {
     content: '';
     position: absolute;
     right: 0;
     top: 0;
-    width: 405px; /* Adjusted for container */
+    width: 900px;
     height: 100%;
     background-image: url('../../images/pool.jpg');
     background-position: center center;
@@ -95,33 +141,32 @@ button {
     background: rgba(0, 0, 0, 0.6);
 }
 .cont.s--signup .img:before {
-    transform: translate3d(270px, 0, 0); /* Adjusted for width */
+    transform: translate3d(640px, 0, 0);
 }
 .img__text {
     z-index: 2;
     position: absolute;
     left: 0;
-    top: 30px; /* Adjusted positioning */
+    top: 50px;
     width: 100%;
-    padding: 0 10px;
+    padding: 0 20px;
     text-align: center;
     color: #fff;
     transition: transform 1.2s ease-in-out;
 }
 .img__text h2 {
     margin-bottom: 10px;
-    font-size: 22px; /* Adjusted font size */
     font-weight: normal;
 }
 .img__text p {
-    font-size: 12px;
+    font-size: 14px;
     line-height: 1.5;
 }
 .cont.s--signup .img__text.m--up {
-    transform: translateX(210px); /* Adjusted width for scaling */
+    transform: translateX(520px);
 }
 .img__text.m--in {
-    transform: translateX(-210px); /* Adjusted width for scaling */
+    transform: translateX(-520px);
 }
 .cont.s--signup .img__text.m--in {
     transform: translateX(0);
@@ -130,13 +175,13 @@ button {
     overflow: hidden;
     z-index: 2;
     position: relative;
-    width: 50px;
+    width: 100px;
     height: 36px;
     margin: 0 auto;
     background: transparent;
     color: #fff;
     text-transform: uppercase;
-    font-size: 13px; /* Adjusted font size */
+    font-size: 15px;
     cursor: pointer;
 }
 .img__btn:after {
@@ -172,17 +217,17 @@ button {
 }
 h2 {
     width: 100%;
-    font-size: 22px; /* Adjusted font size */
+    font-size: 26px;
     text-align: center;
 }
 label {
     display: block;
-    width: 135px; /* Adjusted width */
-    margin: 20px auto 0;
+    width: 260px;
+    margin: 25px auto 0;
     text-align: center;
 }
 label span {
-    font-size: 10px; /* Adjusted font size */
+    font-size: 12px;
     color: #cfcfcf;
     text-transform: uppercase;
 }
@@ -191,19 +236,19 @@ input {
     width: 100%;
     margin-top: 5px;
     padding-bottom: 5px;
-    font-size: 14px; /* Adjusted font size */
+    font-size: 16px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.4);
     text-align: center;
 }
 .forgot-pass {
-    margin-top: 10px;
+    margin-top: 15px;
     text-align: center;
-    font-size: 10px; /* Adjusted font size */
+    font-size: 12px;
     color: #cfcfcf;
 }
 .submit {
-    margin-top: 30px;
-    margin-bottom: 15px;
+    margin-top: 40px;
+    margin-bottom: 20px;
     background: #d4af7a;
     text-transform: uppercase;
 }
@@ -221,10 +266,10 @@ input {
 .cont.s--signup .sign-in {
     transition-timing-function: ease-in-out;
     transition-duration: 1.2s;
-    transform: translate3d(270px, 0, 0); /* Adjusted for width scaling */
+    transform: translate3d(640px, 0, 0);
 }
 .sign-up {
-    transform: translate3d(-405px, 0, 0); /* Adjusted for width scaling */
+    transform: translate3d(-900px, 0, 0);
 }
 .cont.s--signup .sign-up {
     transform: translate3d(0, 0, 0);
@@ -233,7 +278,7 @@ input {
     position: absolute;
     left: 5px;
     bottom: 5px;
-    width: 20px; /* Adjusted width */
+    width: 32px;
 }
 .icon-link img {
     width: 100%;

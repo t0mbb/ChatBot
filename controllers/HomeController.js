@@ -78,6 +78,7 @@ let postWebhook =  (req, res) => {
                 const feedback = webhook_event.messaging_feedback.feedback_screens[0];
                 const rating = feedback.questions.fdback.payload;
                 const additional = feedback.questions.fdback.follow_up.payload;
+                console.log(additional);
                 saveFeedback(webhook_event.sender.id , rating , additional)
            
             }
@@ -306,12 +307,15 @@ let setInfoOrder = async (req, res) => {
         };
 
         let response2 = templateMessage.setInfoOrderTemplate();
+        let psid = req.body.psid;
 
         await chatbotService.sendMessage(req.body.psid, response1);
         await chatbotService.sendMessage(req.body.psid, response2);
 
         return res.status(200).json({
-            message: "Co Lich Dat Ban Moi"
+            message: "Co Lich Dat Ban Moi",
+            psid : psid,
+            response : response1
         });
     } catch (e) {
         console.log(e);
