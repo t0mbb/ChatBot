@@ -308,6 +308,7 @@ let setInfoOrder = async (req, res) => {
 
         let response2 = templateMessage.setInfoOrderTemplate();
         let psid = req.body.psid;
+        console.log(psid);
 
         await chatbotService.sendMessage(req.body.psid, response1);
         await chatbotService.sendMessage(req.body.psid, response2);
