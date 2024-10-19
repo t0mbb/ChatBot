@@ -184,7 +184,8 @@ let saveFeedback = async ( sender_psid, rating , additional) => {
         rating : rating, 
         addtional : additional
        })
-        console.log(result);
+      await excel.FeedBackGGSheet(sender_psid , rating , additional)
+        
        
     } catch (e) {
         console.log(e);

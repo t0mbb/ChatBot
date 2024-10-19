@@ -13,10 +13,10 @@ router.get("/zalo_verifierVOIK98U59YDtihmNd88L05kDhJQt-trjCZam.html" , homepageC
 router.get("/info-order/:id", homepageController.getInfoOrderPage);
 router.post("/set-info-order", homepageController.setInfoOrder);
 
-router.post('/webhookZalo',homepageController.postwebhookZalo)
-router.post('/zalo/sendMessage',zaloController.handleMessage)
-router.get('/zalo/CallBack',zaloController.getCallBack)
-router.get('/zalo/Auth',zaloController.accessTokenByRef)
+// router.post('/webhookZalo',homepageController.postwebhookZalo)
+// router.post('/zalo/sendMessage',zaloController.handleMessage)
+// router.get('/zalo/CallBack',zaloController.getCallBack)
+// router.get('/zalo/Auth',zaloController.accessTokenByRef)
 
 module.exports = router;
 
