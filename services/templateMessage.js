@@ -73,7 +73,7 @@ let sendLookupOrderTemplate = (senderID) =>{
             "type":"template",
             "payload":{
                 "template_type":"button",
-                "text":"Quý Khách chọn nút đặt bàn và điền thông tin  ",
+                "text":"Quý Khách chọn nút đặt bàn và để lại thông tin theo mẫu nhé ạ ",
                 "buttons":[
                     {
                         "type": "web_url",
