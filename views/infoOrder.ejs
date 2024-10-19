@@ -114,6 +114,7 @@
         // Prevent form submission if validation fails
         if (!isValid) {
                 event.preventDefault();
+            } else {
                 window.close();
                 MessengerExtensions.requestCloseBrowser(function success() {
                 // webview closed
@@ -121,8 +122,6 @@
                 // an error occurred
                 console.log(err);
             });
-            } else {
-
             }
         });
   

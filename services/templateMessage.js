@@ -73,7 +73,7 @@ let sendLookupOrderTemplate = (senderID) =>{
             "type":"template",
             "payload":{
                 "template_type":"button",
-                "text":"Khách iu chọn nút đặt bàn và điền thông tin ",
+                "text":"Quý Khách chọn nút đặt bàn và điền thông tin  ",
                 "buttons":[
                     {
                         "type": "web_url",
@@ -82,11 +82,6 @@ let sendLookupOrderTemplate = (senderID) =>{
                         "webview_height_ratio": "tall",
                         "messenger_extensions": true //false: open the webview in new tab
                     },
-                    {
-                        "type": "postback",
-                        "title": "Quay lại Menu",
-                        "payload": "SEND_QUICKREPLY"
-                    }
                 ]
             }
         }
