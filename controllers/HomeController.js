@@ -184,7 +184,7 @@ let saveFeedback = async ( sender_psid, rating , additional) => {
         rating : rating, 
         addtional : additional
        })
-      await excel.FeedBackGGSheet(sender_psid , rating , additional)
+      await excelService.FeedBackGGSheet(sender_psid , rating , additional)
         
        
     } catch (e) {
