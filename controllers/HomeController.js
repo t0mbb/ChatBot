@@ -4,6 +4,7 @@ var  homepageService = require ("../services/homepageService");
 var chatbotService = require("../services/chatbotService");
 var templateMessage = require ("../services/templateMessage");
 var feedbackModel = require("../models/feedback")
+var excelService = require("../services/excel")
 
 require("dotenv").config();
 
@@ -299,27 +300,23 @@ let setInfoOrder = async (req, res) => {
 
 
         let response1 = {
-            "text": `----- Empty xin gửi lại thông tin Đặt Bàn -----
+            "text": `--- Empty xin gửi lại thông tin Đặt Bàn ---
             \nAnh/Chị |  ${customerName}
-            \n
+
             \nĐặt lúc : ${req.body.time}
-            \n
+            
             \nSĐT : ${req.body.orderNumber}
             `
         };
 
         let response2 = templateMessage.setInfoOrderTemplate();
         let psid = req.body.psid;
-        console.log(psid);
+    
 
         await chatbotService.sendMessage(req.body.psid, response1);
         await chatbotService.sendMessage(req.body.psid, response2);
-
-        return res.status(200).json({
-            message: "Co Lich Dat Ban Moi",
-            psid : psid,
-            response : response1
-        });
+        await excelService.DatBanGGSheet(psid,customerName,req.body.time,req.body.orderNumber)
+        return res.status(200)
     } catch (e) {
         console.log(e);
     }

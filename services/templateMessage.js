@@ -145,11 +145,11 @@ let setInfoOrderTemplate = ()=>{
             "payload":{
                 "template_type":"button",
                 "text":"Bên mình đã note lịch và sẽ giữ bàn cho quý khách trong 10 phút, mình vui lòng qua đúng giờ nhé ạ ♥️" +
-                    "\nEmpty xin cảm ơn Quý Khách!",
+                    "\n \nEmpty xin cảm ơn Quý Khách!",
                 "buttons":[
                     {
                         "type": "postback",
-                        "title": "Quay Lại Menu Chính",
+                        "title": "Quay Lại Menu",
                         "payload": "SEND_QUICKREPLY"
                     }
                 ]

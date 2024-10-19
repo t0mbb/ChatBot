@@ -11,9 +11,15 @@
     <link rel="stylesheet" href="css/style.css">
     <script>
         let facebookAppId = "<%= facebookAppId %>"
-        console.log("Facebook App ID from EJS:", facebookAppId);
+        
         let psid = "<%= psid %>"
-        console.log(psid);
+        (function(d, s, id){
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) {return;}
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/messenger.Extensions.js";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'Messenger'));
     </script>
     
    
@@ -106,9 +112,18 @@
   
         // Prevent form submission if validation fails
         if (!isValid) {
-          event.preventDefault();
-        }
-      });
+                event.preventDefault();
+            } else {
+                window.close();
+                MessengerExtensions.requestCloseBrowser(function success() {
+                // webview closed
+            }, function error(err) {
+                // an error occurred
+                console.log(err);
+            });
+
+            }
+        });
   
       // Remove invalid class on input change
       $('input').on('input', function () {
