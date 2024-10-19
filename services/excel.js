@@ -78,7 +78,7 @@ let FeedBackGGSheet = async (psid, rating , additional,req, res) => {
         await sheet.addRow({
             "ID": psid,                   // Value for column B (new row starting at B7)
             "TIME LOGS": formatedDate,  // Value for column C
-            "Rating": rating,            // Value for column D
+            "RATING": rating,            // Value for column D
             "COMMENT": additional,  // Value for column E       
         });
        
