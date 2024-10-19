@@ -70,7 +70,7 @@ let FeedBackGGSheet = async (psid, rating , additional,req, res) => {
           });
         const doc = new GoogleSpreadsheet(SHEET_ID,serviceAccountAuth)
         await doc.loadInfo(); // loads document properties and worksheets
-        
+
          // or use `doc.sheetsById[id]` or `doc.sheetsByTitle[title]`
         const sheet = doc.sheetsByTitle["FEEDBACK"]; // Replace "DatBan" with your sheet title
 
@@ -79,9 +79,7 @@ let FeedBackGGSheet = async (psid, rating , additional,req, res) => {
             "ID": psid,                   // Value for column B (new row starting at B7)
             "TIME LOGS": formatedDate,  // Value for column C
             "Rating": rating,            // Value for column D
-            "COMMENT": additional,  // Value for column E
-            "SĐT": phone,
-            "Status" : "Chưa Đến"              // Value for column F
+            "COMMENT": additional,  // Value for column E       
         });
        
     }
