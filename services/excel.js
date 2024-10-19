@@ -70,8 +70,7 @@ let FeedBackGGSheet = async (psid, rating , additional,req, res) => {
           });
         const doc = new GoogleSpreadsheet(SHEET_ID,serviceAccountAuth)
         await doc.loadInfo(); // loads document properties and worksheets
-      
-          console.log(time);
+        
          // or use `doc.sheetsById[id]` or `doc.sheetsByTitle[title]`
         const sheet = doc.sheetsByTitle["FEEDBACK"]; // Replace "DatBan" with your sheet title
 
