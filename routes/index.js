@@ -12,7 +12,7 @@ router.get("/set-up-profile", homepageController.getSetupProfilePage);
 router.get("/zalo_verifierVOIK98U59YDtihmNd88L05kDhJQt-trjCZam.html" , homepageController.verify)
 router.get("/info-order/:id", homepageController.getInfoOrderPage);
 router.post("/set-info-order", homepageController.setInfoOrder);
-
+router.get("/success",homepageController.getVerify)
 // router.post('/webhookZalo',homepageController.postwebhookZalo)
 // router.post('/zalo/sendMessage',zaloController.handleMessage)
 // router.get('/zalo/CallBack',zaloController.getCallBack)

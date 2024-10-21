@@ -17,15 +17,7 @@ let sendMessageWelcomeNewUser = (sender_psid) => {
                 "text": `Empty Arena Billiards Hà Nội rất hân hạnh được phục vụ quý khách !`
             };
 
-            //send an image
-            let response2 = {
-                "attachment": {
-                    "type": "image",
-                    "payload": {
-                        "url": "https://res.cloudinary.com/ddx8hv83x/image/upload/v1728461643/338859574_3427471284142607_6439415094304391260_n_1_gl2cu1.png"
-                    }
-                }
-            };
+      
 
 
             //send a quick reply
@@ -62,7 +54,6 @@ let sendMessageWelcomeNewUser = (sender_psid) => {
             };
 
             await sendMessage(sender_psid, response1);
-            await sendMessage(sender_psid, response2);
             await sendMessage(sender_psid, response3);
             resolve("done");
         } catch (e) {
