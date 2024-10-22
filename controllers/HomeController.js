@@ -321,7 +321,7 @@ let setInfoOrder = async (req, res) => {
         await chatbotService.sendMessage(req.body.psid, response1);
         await chatbotService.sendMessage(req.body.psid, response2);
         await excelService.DatBanGGSheet(psid,customerName,req.body.time,req.body.orderNumber)
-        return res.redirect('success.ejs');
+        return res.render('success.ejs');
     } catch (e) {
         console.log(e);
     }
