@@ -123,26 +123,26 @@ let handleMessage = async (sender_psid, received_message) => {
     if (received_message && received_message.quick_reply && received_message.quick_reply.payload) {
         let payload = received_message.quick_reply.payload;
         if (payload === "ZALO_REF") {
-            await chatbotService.sendZALOOATemplate(sender_psid);
+           return await chatbotService.sendZALOOATemplate(sender_psid);
 
         } else if (payload === "FEEDBACK") {
-            await handleFeedback(sender_psid);
+            return await handleFeedback(sender_psid);
 
         } else if (payload === "TALK_AGENT") {
-            await chatbotService.requestTalkToAgent(sender_psid);
+           return await chatbotService.requestTalkToAgent(sender_psid);
         }
          else if (payload === "CTKM") {
-            await chatbotService.handleCTKM(sender_psid);
+           return await chatbotService.handleCTKM(sender_psid);
          } else if (payload === "DATBAN") {
-            await chatbotService.sendLookupOrder(sender_psid);
+           return await chatbotService.sendLookupOrder(sender_psid);
         }
     }
  
     if (received_message.text) {
         // Create the payload for a basic text message
-        await chatbotService.requestTalkToAgent(sender_psid);
+       return await chatbotService.requestTalkToAgent(sender_psid);
     } 
-    await chatbotService.sendMessage(sender_psid);
+    // await chatbotService.sendMessage(sender_psid);
 
 };
 
