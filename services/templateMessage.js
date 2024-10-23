@@ -44,7 +44,7 @@ let sendCTKMTemplate = () =>{
                 "template_type": "generic",
                 "elements": [
                     {
-                        "title": "CTKM Tháng 10 Của EMPTY ARENA BILLIARDS ",
+                        "title": " Tổng Hợp CTKM Tháng 10 Của EMPTY ARENA BILLIARDS ",
                         "image_url": "https://res.cloudinary.com/dwsqbwhnq/image/upload/v1728917595/CTKM_THANG_10_e8gscm.jpg",
                         "subtitle": "  ▪️ 𝐓𝐡𝐚́𝐧𝐠 𝟏𝟎 𝐁𝐮̀𝐧𝐠 𝐍𝐨̂̉ 𝐯𝐨̛́𝐢 𝐂𝐓𝐊𝐌 - 𝐆𝐢𝐚́ 𝐂𝐡𝐢̉ 𝐓𝐮̛̀ 𝟑𝟓𝐤/𝐡▪️",
                         "default_action": {

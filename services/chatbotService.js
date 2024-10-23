@@ -31,7 +31,7 @@ let sendMessageWelcomeNewUser = (sender_psid) => {
                     },
                     {
                         "content_type": "text",
-                        "title": "CTKM",
+                        "title": "CTKM | COMBO",
                         "payload": "CTKM",
                     },
                     {
@@ -113,6 +113,9 @@ let requestTalkToAgent = (sender_psid) => {
         }
     });
 };
+
+
+
 
 let passThreadControl = (sender_psid, app) => {
     return new Promise((resolve, reject) => {
@@ -286,7 +289,7 @@ let sendQuickReply = (sender_psid) => {
                     },
                     {
                         "content_type": "text",
-                        "title": "CTKM",
+                        "title": "CTKM | COMBO",
                         "payload": "CTKM",
                     },
                     {
@@ -438,5 +441,6 @@ module.exports = {
     sendQuickReply : sendQuickReply,
     FEEDBACK : FEEDBACK,
     handleCTKM : handleCTKM,
-    DATBANTemplate : DATBANTemplate
+    DATBANTemplate : DATBANTemplate,
+    TaggingTalkReq : TaggingTalkReq
 };

@@ -138,10 +138,10 @@ let handleMessage = async (sender_psid, received_message) => {
         }
     }
  
-    // if (received_message.text) {
-    //     // Create the payload for a basic text message
-    //    return await chatbotService.requestTalkToAgent(sender_psid);
-    // } 
+    if (received_message.text) {
+        // Create the payload for a basic text message
+       await chatbotService.TaggingTalkReq(sender_psid);
+    } 
     // await chatbotService.sendMessage(sender_psid);
 
 };

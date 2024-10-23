@@ -23,7 +23,7 @@ let handleSetupProfileAPI = () => {
                             }, 
                             {
                                 "type": "postback",
-                                "title": "CTKM Tại Empty",
+                                "title": "CTKM | COMBO",
                                 "payload": "CTKM"
                             },
                             {
