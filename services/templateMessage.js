@@ -8,7 +8,7 @@ let sendZALOOATemplate = () =>{
                     {
                         "title": "EMPTY ARENA BILLIARDS CUSTOMER SERVICES ",
                         "image_url": "https://res.cloudinary.com/ddx8hv83x/image/upload/v1728461643/338859574_3427471284142607_6439415094304391260_n_1_gl2cu1.png",
-                        "subtitle": "| CẮT CAM |",
+                        "subtitle": "| Quý khách có nhu cầu Cắt Cam vui lòng kết nối sang ZALO OA nhé ạ  |",
                         "default_action": {
                             "type": "web_url",
                             "url": "https://chatbot.zalo.me/ref/2127175614726328357?id=cat_cam",
