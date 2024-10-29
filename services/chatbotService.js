@@ -17,7 +17,6 @@ let sendMessageWelcomeNewUser = (sender_psid) => {
                 "text": `Empty Arena Billiards Hà Nội rất hân hạnh được phục vụ quý khách !`
             };
 
-      
 
 
             //send a quick reply
@@ -177,7 +176,7 @@ let handleCTKM = (sender_psid) => {
     return new Promise(async (resolve, reject) => {
         try {
             //send a generic template message
-            let response = templateMessage.sendCTKMTemplate();
+            let response = CTKM();
             await sendMessage(sender_psid, response);
             resolve("done");
         } catch (e) {
@@ -185,6 +184,8 @@ let handleCTKM = (sender_psid) => {
         }
     });
 }
+
+
 
 let sendLookupOrder = (sender_psid) => {
     return new Promise(async (resolve, reject) => {
@@ -403,6 +404,41 @@ let DATBANTemplate = (sender_psid) => {
                           "url": "https://www.facebook.com/privacy/explanation"
                         },
                         "expires_in_days": 1
+                      }
+                    }
+                  }
+            };
+            // Send the HTTP request to the Messenger Platform
+            request({
+                "uri": `https://graph.facebook.com/v21.0/${PAGE_ID}/messages?access_token=${PAGE_ACCESS_TOKEN}`,
+                "method": "POST",
+                "json": request_body
+            }, (err, res, body) => {
+                    console.log(body);
+                if (!err) {
+                    resolve('SUCCESS SEND FORMS!')
+                } else {
+                    reject("Unable to send message:" + err);
+                }
+            });
+        } catch (e) {
+            reject(e);
+        }
+    });
+};
+let CTKM = (sender_psid) => {
+    return new Promise((resolve, reject) => {
+        try {
+            // Construct the message body
+            let request_body = {
+                "recipient": {
+                    "id": sender_psid
+                  },
+                  "message": {
+                    "attachment": {
+                      "type": "image",
+                      "payload": {
+                        "attachment_id": "539576538803139"
                       }
                     }
                   }
