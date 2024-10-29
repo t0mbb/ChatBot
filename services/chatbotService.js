@@ -176,7 +176,7 @@ let handleCTKM = (sender_psid) => {
     return new Promise(async (resolve, reject) => {
         try {
             //send a generic template message
-            let response = CTKM();
+            let response = CTKM(sender_psid);
             await sendMessage(sender_psid, response);
             resolve("done");
         } catch (e) {
